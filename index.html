@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vic Michaelis</title>
+  <meta name="description" content="Vic Michaelis is a multipurpose Discord bot with pets, macarons, gacha, games, neighborhoods, mail, quests, and cozy server systems." />
+  <meta name="theme-color" content="#F6B8B8" />
+    <link rel="icon" type="image/png" href="websiteicon.png" />
+  <link rel="shortcut icon" type="image/png" href="websiteicon.png" />
+  <link rel="apple-touch-icon" href="websiteicon.png" />
+<link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root {
+      --bg:#130911; --bg2:#241019; --panel:#28131c; --panel2:#321823; --ink:#fff6ee; --muted:#e7b8a7; --soft:#ffd9c2;
+      --pink:#F6B8B8; --peach:#ffc08a; --sun:#ffcf77; --orange:#e98257; --wine:#6d3046; --line:rgba(255,221,200,.17); --line2:rgba(255,221,200,.28);
+      --shadow:0 34px 100px rgba(48,13,24,.48); --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scrollbar-color:var(--pink) #1b0c14;scrollbar-width:thin} body{margin:0;font-family:Satoshi,Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden} body::-webkit-scrollbar{width:14px} body::-webkit-scrollbar-track{background:#160a11} body::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--pink),var(--orange));border:4px solid #160a11;border-radius:99px} body::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ffd1d1,#ff9c68)}
+    body::before{content:"";position:fixed;inset:0;z-index:-5;background:radial-gradient(circle at 50% -15%,#ffd59a 0 8%,#e98a68 21%,transparent 46%),radial-gradient(circle at 15% 18%,rgba(246,184,184,.38),transparent 34rem),radial-gradient(circle at 89% 10%,rgba(255,207,119,.25),transparent 33rem),linear-gradient(180deg,#170a13 0%,#2c1220 48%,#120910 100%)}
+    .liquid{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden} .wave{position:absolute;left:-18%;bottom:-90px;width:140%;height:270px;border-radius:44% 56% 48% 52%;background:linear-gradient(90deg,rgba(246,184,184,.22),rgba(255,192,138,.20),rgba(233,130,87,.18));animation:wave 18s ease-in-out infinite;filter:blur(.4px)} .wave:nth-child(2){bottom:-30px;opacity:.55;animation-duration:25s;animation-direction:reverse} .wave:nth-child(3){bottom:45px;opacity:.35;animation-duration:34s} @keyframes wave{50%{transform:translateX(8%) rotate(2deg)}}
+    a{color:inherit;text-decoration:none} button,input{font:inherit} .wrap{width:min(var(--max),calc(100% - 40px));margin:auto} .section{padding:80px 0} .section-head{text-align:center;max-width:760px;margin:0 auto 34px} .section-kicker{display:inline-flex;gap:8px;align-items:center;color:#ffd6bb;background:rgba(255,225,200,.07);border:1px solid var(--line);padding:8px 12px;border-radius:999px;font-weight:900;font-size:.82rem} .section-title{font-size:clamp(2.3rem,5vw,4.6rem);letter-spacing:-.06em;line-height:.94;margin:18px 0 12px} .section-copy{color:var(--muted);font-size:1.08rem;line-height:1.7;margin:0}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(19,9,17,.62);border-bottom:1px solid var(--line);backdrop-filter:blur(22px)} .top-inner{width:min(1240px,calc(100% - 28px));height:82px;margin:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px} .brand{justify-self:start;display:flex;align-items:center;gap:12px} .bot-icon{width:54px;height:54px;border-radius:18px;object-fit:cover;box-shadow:0 16px 44px rgba(246,184,184,.18);background:#241019} .brand-text strong{display:block;font-size:1.05rem;letter-spacing:-.03em} .brand-text span{display:block;color:var(--muted);font-weight:800;font-size:.73rem;margin-top:2px} .nav{justify-self:center;display:flex;align-items:center;gap:7px;padding:7px;border:1px solid var(--line);background:rgba(255,235,218,.06);border-radius:999px} .nav a{display:flex;align-items:center;gap:8px;color:var(--soft);font-weight:900;font-size:.92rem;padding:10px 15px;border-radius:999px;transition:.18s} .nav a:hover,.nav a.active{background:linear-gradient(180deg,rgba(255,217,161,.22),rgba(246,184,184,.18));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)} .top-actions{justify-self:end} .invite{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:13px 18px;font-weight:950;color:#321018;background:linear-gradient(180deg,#ffd9a1,#f6b8b8 62%,#dd7f5e);box-shadow:0 18px 46px rgba(246,184,184,.24),inset 0 1px 0 rgba(255,255,255,.5);transition:.18s} .invite:hover{transform:translateY(-2px)}
+    .hero{position:relative;padding:88px 0 54px;min-height:660px} .hero-grid{width:min(1240px,calc(100% - 28px));margin:auto;display:grid;grid-template-columns:1.08fr .82fr;gap:38px;align-items:start} .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid var(--line);background:rgba(255,235,218,.075);border-radius:999px;color:#ffd8bd;font-weight:950;font-size:.86rem} .hero h1{font-size:clamp(3.2rem,7.2vw,6.9rem);line-height:.9;letter-spacing:-.078em;margin:20px 0 34px;max-width:800px} .mark{position:relative;color:#fff0cf;text-shadow:0 0 34px rgba(255,207,119,.22);display:inline-block;white-space:nowrap} .mark::after{content:"";position:absolute;left:-.045em;right:-.045em;bottom:-.135em;height:.105em;min-width:calc(100% + .09em);background:linear-gradient(90deg,rgba(255,192,138,.05),#e98257 10%,#ffcf77 88%,rgba(255,207,119,.10));border-radius:999px;transform:skewX(-8deg);z-index:-1;opacity:.74} .hero p{max-width:610px;color:var(--soft);font-size:1.23rem;line-height:1.72;margin:0 0 30px} .hero-actions{display:flex;gap:12px;flex-wrap:wrap} .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 19px;border-radius:999px;font-weight:950;transition:.18s} .btn:hover{transform:translateY(-2px)} .btn-main{color:#321018;background:linear-gradient(180deg,#ffd9a1,#f6b8b8 62%,#dd7f5e);box-shadow:0 18px 48px rgba(246,184,184,.23)} .btn-ghost{border:1px solid var(--line2);background:rgba(255,235,218,.07);color:#fff}
+    .showcase{position:relative;overflow:visible} .preview-card{position:relative;width:100%;max-width:660px;margin-left:auto;overflow:visible;transform:none;transition:.3s;backface-visibility:hidden;-webkit-font-smoothing:auto;cursor:grab;touch-action:pan-y} .preview-card:hover{transform:translateY(-4px)} .preview-card.dragging{cursor:grabbing}
+    /* Prevent accidental text selection while dragging command previews */
+    .preview-card, .preview-card *{ -webkit-user-drag:none; }
+    .preview-card.dragging, .preview-card.dragging *, body.preview-dragging, body.preview-dragging *{
+      user-select:none!important;
+      -webkit-user-select:none!important;
+      -ms-user-select:none!important;
+    }
+.preview-card.dragging .slide{transition:none!important} .preview-label{position:relative;color:#ffd7bd;text-transform:uppercase;letter-spacing:.13em;font-weight:950;font-size:.73rem;margin-bottom:10px} .preview-title{position:relative;margin:0 0 6px;font-size:1.6rem;letter-spacing:-.045em} .preview-copy{position:relative;color:var(--soft);line-height:1.43;margin:0;font-size:.94rem}.command-tip{display:inline-flex;align-items:center;gap:8px;margin:-12px 0 4px;padding:6px 10px;border:1px solid rgba(255,221,200,.22);border-radius:999px;background:rgba(255,235,218,.075);color:#ffe0cb;font-size:.78rem;font-weight:950;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transform:translateY(-10px);position:relative;z-index:3}.preview-copy + .command-tip{margin-top:-12px;}.command-tip code{font-family:inherit;color:#321018;background:linear-gradient(180deg,#ffd9a1,#f6b8b8);padding:3px 7px;border-radius:999px}.slide-window{position:relative;overflow:visible;border-radius:34px;min-height:535px;padding:0} .slide-track{position:relative;min-height:535px;will-change:transform}.slide{position:absolute;inset:0;width:100%;padding:1px;display:flex;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(0) scale(.92);transition:opacity .5s ease,transform .62s cubic-bezier(.18,.9,.2,1),visibility .5s ease;backface-visibility:hidden}.slide.prev-slide{opacity:0;visibility:hidden;transform:translateX(-54%) scale(.78);pointer-events:none}.slide.next-slide{opacity:.34;visibility:visible;transform:translateX(92%) translateY(10px) rotate(7deg) scale(.74);transform-origin:center;pointer-events:auto;z-index:1}.slide.active-slide{opacity:1;visibility:visible;transform:translateX(0) scale(1);pointer-events:auto;z-index:2}.slide-shell{position:relative;width:100%;min-height:535px;border:1px solid var(--line2);border-radius:34px;padding:24px;background:linear-gradient(180deg,rgba(255,236,220,.12),rgba(255,236,220,.055));box-shadow:var(--shadow);overflow:hidden;transform:translateZ(0);backface-visibility:hidden;display:flex;flex-direction:column}.slide-shell::before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 20% 0%,rgba(255,207,119,.18),transparent 34%),radial-gradient(circle at 100% 12%,rgba(246,184,184,.18),transparent 32%);pointer-events:none}.slide-shell > *{position:relative}.slide.active-slide .preview-label{animation:previewTextIn .42s ease both}.slide.active-slide .preview-title{animation:previewTextIn .42s ease .03s both}.slide.active-slide .preview-copy{animation:previewTextIn .42s ease .06s both}@keyframes previewTextIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}} .discord{width:100%;flex:1 1 auto;height:auto;min-height:0;background:#313338;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:0;margin-bottom:0} .msg{display:flex;gap:14px;width:min(100%,560px);min-width:0;align-items:flex-start;margin:auto} .avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:0 0 auto} .msg-body{flex:1;min-width:0;align-self:flex-start} .msg-top{display:flex;align-items:center;gap:8px;color:#f4f4f5;font-size:.92rem;flex-wrap:wrap} .bot-tag{font-size:.68rem;font-weight:950;color:white;background:#5865f2;border-radius:4px;padding:2px 5px} .time{font-size:.75rem;color:#a3a6aa} .embed{margin-top:10px;border-left:4px solid #F6B8B8;border-radius:4px 12px 12px 4px;background:#2b2d31;padding:13px;overflow:hidden} .embed-title{font-weight:950;color:#fff0d9} .embed-desc{color:#d7d9dd;font-size:.91rem;line-height:1.5;margin-top:4px} .fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px} .field{background:rgba(255,255,255,.04);border-radius:8px;padding:8px;color:#e6e6ea;font-size:.8rem} .field strong{display:block;color:#fff6ed;margin-bottom:3px} .embed-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px} .embed-btn{border:0;background:#3b3d44;color:#e9e9ed;border-radius:8px;padding:9px 12px;font-weight:850} .dots{display:flex;justify-content:center;gap:9px;margin-top:14px} .dot{width:10px;height:10px;border:0;border-radius:50%;background:rgba(255,225,204,.3);cursor:pointer;transition:.18s} .dot.active,.dot:hover{background:#ffd3aa;transform:scale(1.18)}
+    .stats{padding:30px;border:1px solid var(--line);border-radius:32px;background:rgba(255,235,218,.055);overflow:hidden} .marquee{display:flex;width:max-content;animation:marquee 33s linear infinite} @keyframes marquee{to{transform:translateX(-50%)}} .chip{display:flex;align-items:center;gap:12px;min-width:250px;margin-right:12px;padding:13px 15px;border-radius:20px;background:rgba(255,235,218,.065);border:1px solid var(--line)} .chip-i{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#ffd198,#a34e63);display:grid;place-items:center;color:#321018;font-size:1rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.32)} .chip p{margin:0;font-weight:950} .chip span{display:block;color:var(--muted);font-size:.78rem;margin-top:2px}
+    .features-grid{display:grid;grid-template-columns:1.14fr .86fr;gap:16px;align-items:stretch} .feature-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:28px;padding:26px;background:linear-gradient(180deg,rgba(255,235,218,.09),rgba(255,235,218,.045));box-shadow:0 20px 70px rgba(28,8,16,.22)} .feature-card h3{font-size:1.55rem;margin:0 0 10px;letter-spacing:-.035em} .feature-card p{color:var(--muted);line-height:1.65;margin:0 0 14px} .feature-card.tall{min-height:0;height:100%;display:flex;flex-direction:column;justify-content:flex-start} .feature-card.tall .care-list{flex:1} .feature-card.tall .care-item{display:flex;flex-direction:column;justify-content:center;min-height:70px} .side-stack{display:grid;gap:16px;grid-template-rows:repeat(3,minmax(0,1fr));height:100%;align-self:stretch} .mini-cmds{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px} .mini-cmds span{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:999px;background:rgba(255,207,119,.08);border:1px solid rgba(255,207,119,.18);color:#ffe1bc;font-weight:900;font-size:.84rem} .care-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;margin-bottom:0;align-content:stretch} .care-item{border:1px solid var(--line);background:rgba(255,235,218,.055);border-radius:18px;padding:12px 13px} .care-item strong{display:block;color:#ffe4cf;margin-bottom:5px} .care-item span{color:#cfa190;font-size:.9rem;line-height:1.4}
+    .commands-panel{border:1px solid var(--line);border-radius:34px;background:rgba(255,235,218,.06);padding:22px;box-shadow:var(--shadow)} .search-row{display:flex;gap:12px;align-items:center;background:rgba(255,235,218,.08);border:1px solid var(--line);border-radius:20px;padding:12px 14px} .search-row i{color:#ffd1b5} .search-row input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-weight:800} .search-row input::placeholder{color:#c69786} .filters{position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 10px}.filter{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;background:rgba(255,235,218,.06);color:#ffd8c0;padding:9px 12px;font-weight:900;cursor:pointer;transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease}.filter:hover{transform:translateY(-1px);background:rgba(255,235,218,.1)} .filter.active{background:linear-gradient(180deg,#ffd9a1,#f6b8b8);color:#321018;border-color:transparent;animation:pillPop .22s ease}.filter .chev{font-size:.72rem;opacity:.75;transition:transform .18s}.filter.active .chev{transform:rotate(-90deg)}@keyframes pillPop{0%{transform:scale(.96)}70%{transform:scale(1.04)}100%{transform:scale(1)}}.sub-filter-wrap{position:relative;z-index:35;margin:0 0 0 -5px;display:none}.sub-filter-wrap.open{display:inline-flex;align-items:center;animation:subSlideOut .2s ease both}.sub-filter-toggle{border:1px solid var(--line);border-left-color:rgba(255,235,218,.08);background:rgba(255,235,218,.08);color:#ffe2ce;border-radius:999px;padding:9px 12px;font-weight:950;display:inline-flex;align-items:center;gap:10px;cursor:pointer;box-shadow:inset 10px 0 14px rgba(255,217,161,.035)}.sub-menu{position:absolute;z-index:120;top:50%;left:calc(100% + 8px);transform:translateY(-50%);min-width:245px;max-width:min(640px,calc(100vw - 48px));display:none;padding:8px;border:1px solid var(--line);border-radius:18px;background:rgba(36,16,25,.98);box-shadow:0 18px 60px rgba(0,0,0,.36);backdrop-filter:blur(14px)}.sub-filter-wrap.menu-open .sub-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:6px;animation:subSlideOutMenu .16s ease both}.sub-option{border:0;text-align:left;border-radius:12px;padding:10px 11px;background:transparent;color:#ffd8c0;font-weight:850;cursor:pointer}.sub-option:hover,.sub-option.active{background:rgba(255,235,218,.11);color:#fff}@keyframes subSlideOut{from{opacity:0;transform:translateX(-8px) scale(.98)}to{opacity:1;transform:none}}@keyframes subSlideOutMenu{from{opacity:0;transform:translate(-8px,-50%)}to{opacity:1;transform:translate(0,-50%)}}.cmd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;max-height:560px;overflow:auto;padding-right:8px;scrollbar-color:var(--pink) rgba(255,235,218,.06);scrollbar-width:thin;transition:opacity .16s ease,transform .16s ease}.cmd-grid.switching{opacity:.3;transform:translateY(5px)} .cmd-grid::-webkit-scrollbar{width:12px} .cmd-grid::-webkit-scrollbar-track{background:rgba(255,235,218,.05);border-radius:99px} .cmd-grid::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#F6B8B8,#e98257);border:3px solid #2a121d;border-radius:99px} .command{border:1px solid var(--line);background:rgba(19,9,17,.36);border-radius:18px;padding:15px;min-height:116px;animation:cmdIn .24s ease both} @keyframes cmdIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}.cmd-name{font-weight:950;color:#ffe4cf;margin-bottom:6px} .cmd-desc{font-size:.92rem;color:#d4a897;line-height:1.45} .cmd-subcommands{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.cmd-subcommand{font-size:.72rem;font-weight:900;color:#ffe3d1;background:rgba(255,235,218,.075);border:1px solid rgba(255,221,200,.16);border-radius:999px;padding:5px 8px}.cmd-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.cmd-cat,.cmd-sub{display:inline-flex;font-size:.72rem;font-weight:950;border-radius:999px;padding:5px 8px}.cmd-cat{color:#321018;background:#F6B8B8}.cmd-sub{color:#ffe7d8;background:rgba(255,235,218,.08);border:1px solid var(--line);transition:background .18s, transform .18s}.command:hover .cmd-sub{background:rgba(255,235,218,.13);transform:translateY(-1px)}
+    .cta{padding-bottom:80px}.cta-card{position:relative;overflow:hidden;border:0;outline:0;border-radius:38px;min-height:310px;background:radial-gradient(circle at 75% 38%,rgba(255,214,160,.22),transparent 30%),linear-gradient(135deg,#4b2033,#9f4e58 52%,#d89262);box-shadow:0 30px 100px rgba(232,125,79,.24);padding:46px;color:#fff6ee}.cta-card::after{content:"";position:absolute;inset:-40% -20% auto auto;width:420px;height:420px;border-radius:50%;background:rgba(255,226,189,.13);filter:blur(28px);pointer-events:none}.cta h3{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.94;letter-spacing:-.065em;margin:0 0 14px;position:relative;z-index:1}.cta p{font-size:1.15rem;color:#ffe6d4;margin:0 0 24px;max-width:650px;line-height:1.6;position:relative;z-index:1}.cta .invite{position:relative;z-index:1;background:#fff2df;color:#471c2c;box-shadow:none}
+    footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted)} .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-name{font-weight:950;color:#fff6ee;letter-spacing:-.02em}.copyright{color:var(--muted);font-weight:800}.foot-links{display:flex;gap:18px;flex-wrap:wrap} .foot-links a{font-weight:850;color:#ffd8c0}
+    .discord .msg{height:100%}.discord .embed{max-height:100%;border-radius:4px 14px 14px 4px}.slide-shell{gap:0}
+    @media (max-width:900px){.top-inner{grid-template-columns:1fr auto}.nav{display:none}.hero-grid,.features-grid{grid-template-columns:1fr}.preview-card{transform:none}.feature-card.tall{min-height:auto}.cmd-grid{grid-template-columns:1fr}.foot{align-items:flex-start;flex-direction:column}}
+  @media(max-width:900px){.sub-menu{top:calc(100% + 8px);left:0;transform:none}.sub-filter-wrap.menu-open .sub-menu{animation:subDropMobile .16s ease both}@keyframes subDropMobile{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}}
+    /* Command filter sidebar + expanded subcommand cards */
+    .commands-panel{position:relative;overflow:hidden}.search-row{gap:10px}.filter-open-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:15px;background:rgba(255,235,218,.075);color:#ffe0cb;padding:11px 13px;font-weight:950;cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease}.filter-open-btn:hover,.filter-open-btn.active{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,217,161,.22),rgba(246,184,184,.16));border-color:rgba(255,221,200,.24);color:#fff}.command-layout{display:grid;grid-template-columns:minmax(0,1fr) 0;gap:0;transition:grid-template-columns .28s cubic-bezier(.18,.9,.2,1),gap .28s ease;align-items:stretch;margin-top:16px}.commands-panel.filter-open .command-layout{grid-template-columns:minmax(0,1fr) 270px;gap:14px}.command-main{min-width:0}.filter-sidebar{min-width:0;opacity:0;transform:translateX(18px);pointer-events:none;border:1px solid var(--line);border-radius:22px;background:rgba(24,10,18,.58);padding:13px;box-shadow:0 18px 60px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);transition:opacity .24s ease,transform .28s cubic-bezier(.18,.9,.2,1);overflow:auto;max-height:560px;scrollbar-width:thin;scrollbar-color:var(--pink) rgba(255,235,218,.05)}.commands-panel.filter-open .filter-sidebar{opacity:1;transform:none;pointer-events:auto}.filter-side-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;color:#ffe0cb;font-weight:950}.filter-side-head span{display:inline-flex;align-items:center;gap:8px}.filter-close{width:31px;height:31px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:rgba(255,235,218,.06);color:#ffd8c0;cursor:pointer}.filter-sidebar .filters{display:grid;grid-template-columns:1fr;gap:8px;margin:0}.filter-sidebar .filter{width:100%;justify-content:space-between;border-radius:14px;padding:11px 12px}.filter-sidebar .filter .chev{margin-left:auto;transform:rotate(90deg)}.filter-sidebar .filter.active .chev{transform:rotate(180deg)}.filter-sidebar .sub-filter-wrap{width:100%;margin:-3px 0 3px;display:none}.filter-sidebar .sub-filter-wrap.open{display:block;animation:subDrop .22s ease both}.filter-sidebar .sub-filter-toggle{width:100%;justify-content:space-between;border-radius:14px;background:rgba(255,235,218,.08);padding:10px 12px}.filter-sidebar .sub-menu{position:static;display:none;min-width:0;max-width:none;transform:none;margin-top:8px;padding:7px;border-radius:16px;background:rgba(44,20,30,.82);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.filter-sidebar .sub-filter-wrap.menu-open .sub-menu{display:grid;grid-template-columns:1fr;gap:5px;animation:subDrop .18s ease both}.filter-sidebar .sub-option{font-size:.84rem}.cmd-grid{margin-top:0}.cmd-parent{font-size:.68rem;color:#ffd8c0;opacity:.8;margin-top:8px;font-weight:900}.filter-summary{display:none;color:var(--muted);font-size:.86rem;font-weight:850;margin:4px 0 12px}.commands-panel.filter-open .filter-summary{display:block}@keyframes subDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}@media(max-width:900px){.commands-panel.filter-open .command-layout{grid-template-columns:1fr}.filter-sidebar{grid-row:1;max-height:none}.command-main{grid-row:2}.filter-open-btn span{display:none}}
+
+  
+/* Command filter sidebar refinements */
+.search-tools{display:flex;align-items:center;gap:10px;margin-bottom:16px}.search-tools .search-row{flex:1;margin:0}.filter-open-btn{width:52px;height:52px;flex:0 0 52px;border:1px solid var(--line);border-radius:18px;background:rgba(255,235,218,.075);color:#ffd8c0;display:grid;place-items:center;cursor:pointer;font-weight:950;transition:transform .18s ease,background .18s ease,color .18s ease}.filter-open-btn:hover,.filter-open-btn.active{transform:translateY(-1px);background:linear-gradient(180deg,#ffd9a1,#f6b8b8);color:#321018}.command-shell{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}.command-shell.filter-open{grid-template-columns:minmax(0,1fr) 280px}.command-shell>.commands-panel{min-width:0}.command-layout{display:block!important;margin-top:0!important}.commands-panel.filter-open .command-layout{display:block!important}.filter-sidebar{position:relative;min-width:0;opacity:0;transform:translateX(20px);pointer-events:none;border:1px solid var(--line);border-radius:22px;background:rgba(24,10,18,.78);padding:13px;box-shadow:0 18px 60px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);transition:opacity .24s ease,transform .28s cubic-bezier(.18,.9,.2,1);overflow:auto;max-height:640px;scrollbar-width:thin;scrollbar-color:var(--pink) rgba(255,235,218,.05);width:280px;align-self:stretch}.command-shell.filter-open .filter-sidebar{opacity:1;transform:none;pointer-events:auto}.filter-sidebar .filters{display:grid;grid-template-columns:1fr;gap:8px;margin:0}.filter-sidebar .filter-wrap{display:grid;gap:7px}.filter-sidebar .filter{width:100%;justify-content:space-between;border-radius:14px;padding:11px 12px}.filter-sidebar .filter .chev{margin-left:auto;transition:transform .18s ease}.filter-sidebar .filter.active .chev{transform:rotate(180deg)}.filter-sidebar .filter:not(.active) .chev{transform:rotate(0deg)}.filter-sidebar .sub-menu-inline{display:none;margin:-2px 0 4px 12px;padding:7px;border-left:1px solid rgba(255,235,218,.14);grid-template-columns:1fr;gap:5px;animation:subDrop .18s ease both}.filter-sidebar .filter-wrap.open .sub-menu-inline{display:grid}.filter-sidebar .sub-option{border:0;text-align:left;border-radius:12px;padding:9px 10px;background:rgba(255,235,218,.045);color:#ffd8c0;font-weight:850;cursor:pointer}.filter-sidebar .sub-option:hover,.filter-sidebar .sub-option.active{background:rgba(255,235,218,.13);color:#fff}.filter-summary,.sub-filter-wrap{display:none!important}@media(max-width:980px){.command-shell.filter-open{grid-template-columns:1fr}.filter-sidebar{width:100%;max-height:none}.command-shell.filter-open .filter-sidebar{order:-1}}
+
+
+/* Keep the command filter sidebar outside the main command box */
+.command-shell{position:relative!important;display:block!important}.command-shell.filter-open{display:block!important}.command-shell>.commands-panel{width:100%!important}.command-shell:not(.filter-open) .filter-sidebar{display:none!important}.command-shell.filter-open .filter-sidebar{display:block!important;position:absolute!important;left:calc(100% + 14px)!important;top:0!important;width:280px!important;opacity:1!important;transform:none!important;pointer-events:auto!important;z-index:25}.search-tools{display:flex!important}.search-tools .search-row{flex:1 1 auto!important}.filter-open-btn span{display:none!important}.filter-open-btn i{margin:0!important}@media(max-width:1320px){.command-shell.filter-open .filter-sidebar{left:auto!important;right:0!important;top:74px!important;width:min(280px,calc(100vw - 44px))!important}}@media(max-width:980px){.command-shell.filter-open .filter-sidebar{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin-top:14px}}
+
+
+    /* Final filter polish: actual chevron icons + multi-select subcategory states */
+    .filter-sidebar .filter .chev{transform:none!important;transition:transform .18s ease,color .18s ease;font-size:.78rem;color:#ffd8c0}
+    .filter-sidebar .filter.active .chev{transform:none!important;color:#fff0df}
+    .filter-sidebar .sub-option.active{background:linear-gradient(180deg,#ffd6a0,#e8905d)!important;color:#2a1017!important;border-color:rgba(255,221,200,.45)!important}
+
+
+    /* Final QoL filter fixes: animated sidebar, themed search clear button, readable chevrons, no typing re-animation */
+    .command-shell:not(.filter-open) .filter-sidebar{display:block!important;position:absolute!important;left:calc(100% + 14px)!important;top:0!important;width:280px!important;opacity:0!important;transform:translateX(18px) scale(.985)!important;visibility:hidden!important;pointer-events:none!important;z-index:25;transition:opacity .24s ease,transform .28s cubic-bezier(.18,.9,.2,1),visibility 0s linear .28s!important}
+    .command-shell.filter-open .filter-sidebar{display:block!important;position:absolute!important;left:calc(100% + 14px)!important;top:0!important;width:280px!important;opacity:1!important;transform:translateX(0) scale(1)!important;visibility:visible!important;pointer-events:auto!important;z-index:25;transition:opacity .24s ease,transform .28s cubic-bezier(.18,.9,.2,1),visibility 0s!important;animation:filterPanelIn .28s cubic-bezier(.18,.9,.2,1) both}
+    @keyframes filterPanelIn{from{opacity:0;transform:translateX(18px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+    @media(max-width:1320px){.command-shell:not(.filter-open) .filter-sidebar,.command-shell.filter-open .filter-sidebar{left:auto!important;right:0!important;top:74px!important;width:min(280px,calc(100vw - 44px))!important}}
+    @media(max-width:980px){.command-shell:not(.filter-open) .filter-sidebar,.command-shell.filter-open .filter-sidebar{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin-top:14px}}
+    .search-row input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;width:15px;height:15px;margin-left:10px;border-radius:999px;background:#ffd8c0;opacity:.9;cursor:pointer;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 2.3 8 6.9l4.6-4.6 1.1 1.1L9.1 8l4.6 4.6-1.1 1.1L8 9.1l-4.6 4.6-1.1-1.1L6.9 8 2.3 3.4z'/%3E%3C/svg%3E") center/12px 12px no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M3.4 2.3 8 6.9l4.6-4.6 1.1 1.1L9.1 8l4.6 4.6-1.1 1.1L8 9.1l-4.6 4.6-1.1-1.1L6.9 8 2.3 3.4z'/%3E%3C/svg%3E") center/12px 12px no-repeat}
+    .search-row input[type=search]::-webkit-search-cancel-button:hover{background:#fff0df;opacity:1}
+    .filter-sidebar .filter.active .chev{color:#321018!important;text-shadow:none!important}
+    .cmd-grid.no-animate,.cmd-grid.no-animate.switching{opacity:1!important;transform:none!important;transition:none!important}
+    .cmd-grid.no-animate .command{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}
+
+
+    /* Final requested UI fixes */
+    .cmd-grid.searching .command{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+    .command-shell:not(.filter-open) .filter-sidebar{transform:translateX(34px) translateY(8px) scale(.96)!important;opacity:0!important}
+    .command-shell.filter-open .filter-sidebar{animation:filterSidebarSlideIn .42s cubic-bezier(.18,.9,.2,1) both!important}
+    @keyframes filterSidebarSlideIn{0%{opacity:0;transform:translateX(34px) translateY(8px) scale(.96)}70%{opacity:1;transform:translateX(-3px) translateY(0) scale(1.005)}100%{opacity:1;transform:translateX(0) translateY(0) scale(1)}}
+
+
+    /* Final filter sidebar animation + command preview content polish */
+    @keyframes filterSidebarOpenStrong{
+      from{opacity:0;transform:translateX(34px) translateY(8px) scale(.965);filter:saturate(.85)}
+      65%{opacity:1;transform:translateX(-3px) translateY(0) scale(1.006);filter:saturate(1)}
+      to{opacity:1;transform:translateX(0) translateY(0) scale(1);filter:none}
+    }
+    @keyframes filterSidebarCloseStrong{
+      from{opacity:1;transform:translateX(0) translateY(0) scale(1)}
+      to{opacity:0;transform:translateX(26px) translateY(6px) scale(.975)}
+    }
+    .command-shell.filter-open .filter-sidebar{animation:filterSidebarOpenStrong .38s cubic-bezier(.18,.9,.2,1) both!important;will-change:opacity,transform!important}
+    .command-shell.filter-closing:not(.filter-open) .filter-sidebar{display:block!important;position:absolute!important;left:calc(100% + 14px)!important;top:0!important;width:280px!important;visibility:visible!important;pointer-events:none!important;z-index:25!important;animation:filterSidebarCloseStrong .28s ease both!important;will-change:opacity,transform!important}
+    @media(max-width:1320px){.command-shell.filter-closing:not(.filter-open) .filter-sidebar{left:auto!important;right:0!important;top:74px!important;width:min(280px,calc(100vw - 44px))!important}}
+    @media(max-width:980px){.command-shell.filter-closing:not(.filter-open) .filter-sidebar{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin-top:14px!important}}
+
+
+    /* Final mobile support + drag threshold polish */
+    @media (max-width: 980px){
+      body{overflow-x:hidden;}
+      .top-inner{width:min(100% - 24px, 760px);height:auto;min-height:72px;grid-template-columns:1fr auto;padding:10px 0;}
+      .brand{min-width:0;}
+      .bot-icon{width:46px;height:46px;border-radius:15px;}
+      .brand-text{min-width:0;}
+      .brand-text strong{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw;}
+      .brand-text span{font-size:.68rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw;}
+      .invite{padding:11px 14px;font-size:.9rem;}
+      .hero{min-height:auto;padding:54px 0 38px;}
+      .hero-grid{width:min(100% - 28px, 760px);grid-template-columns:1fr;gap:34px;align-items:stretch;}
+      .hero h1{font-size:clamp(3rem,14vw,5.2rem);line-height:.92;margin:18px 0 28px;letter-spacing:-.07em;}
+      .hero p{font-size:1.05rem;line-height:1.62;margin-bottom:24px;}
+      .hero-actions{gap:10px;}
+      .btn{padding:13px 16px;}
+      .showcase{width:100%;overflow:hidden;padding:0 2px;}
+      .preview-card{max-width:100%;margin:0;}
+      .preview-card:hover{transform:none;}
+      .slide-window,.slide-track{min-height:520px;}
+      .slide-shell{min-height:520px;padding:20px;border-radius:28px;}
+      .slide.next-slide,.slide.prev-slide{opacity:0;visibility:hidden;pointer-events:none;}
+      .discord{padding:14px;border-radius:18px;}
+      .msg{width:100%;gap:12px;}
+      .avatar{width:42px;height:42px;}
+      .fields{grid-template-columns:1fr;}
+      .stats{padding:22px;border-radius:26px;}
+      .chip{min-width:220px;}
+      .section{padding:58px 0;}
+      .section-head{margin-bottom:26px;}
+      .features-grid{grid-template-columns:1fr;}
+      .side-stack{grid-template-rows:auto;height:auto;}
+      .feature-card,.feature-card.tall{height:auto;min-height:0;}
+      .care-list{grid-template-columns:1fr!important;}
+      .commands-panel{padding:16px;border-radius:26px;}
+      .search-tools{align-items:stretch;}
+      .search-row{min-width:0;}
+      .filter-open-btn{width:50px;height:50px;flex-basis:50px;}
+      .command-shell,.command-shell.filter-open{display:block!important;}
+      .command-shell:not(.filter-open) .filter-sidebar,
+      .command-shell.filter-open .filter-sidebar,
+      .command-shell.filter-closing:not(.filter-open) .filter-sidebar{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin-top:14px!important;}
+      .cmd-grid{grid-template-columns:1fr;max-height:640px;padding-right:4px;}
+      .community-card{border-radius:30px;min-height:260px;}
+      .community-copy{padding:34px 24px;}
+      .community-copy h3{font-size:clamp(2.2rem,11vw,4rem);}
+      .foot{gap:18px;}
+      .foot-links{flex-wrap:wrap;gap:14px 22px;}
+    }
+    @media (max-width: 560px){
+      .top-inner{width:calc(100% - 20px);gap:10px;}
+      .bot-icon{width:42px;height:42px;border-radius:14px;}
+      .brand-text strong{max-width:42vw;}
+      .brand-text span{display:none;}
+      .invite{padding:10px 12px;font-size:.86rem;}
+      .invite i{margin:0;}
+      .hero{padding-top:40px;}
+      .hero-grid{width:calc(100% - 22px);gap:28px;}
+      .eyebrow{font-size:.78rem;padding:8px 11px;}
+      .hero h1{font-size:clamp(2.75rem,16vw,4.35rem);margin-bottom:24px;}
+      .mark::after{bottom:-.11em;}
+      .hero p{font-size:1rem;}
+      .hero-actions .btn{width:100%;justify-content:center;}
+      .slide-window,.slide-track{min-height:540px;}
+      .slide-shell{min-height:540px;padding:18px;}
+      .preview-title{font-size:1.35rem;}
+      .preview-copy{font-size:.9rem;}
+      .command-tip{font-size:.72rem;padding:6px 9px;}
+      .discord{padding:12px;align-items:center;}
+      .msg{gap:10px;}
+      .avatar{width:38px;height:38px;}
+      .msg-top{gap:6px;font-size:.84rem;}
+      .time{width:100%;font-size:.7rem;}
+      .embed{padding:11px;}
+      .embed-desc{font-size:.84rem;line-height:1.45;}
+      .embed-btn{padding:8px 10px;}
+      .section-title{font-size:clamp(2.2rem,11vw,3.4rem);}
+      .wrap{width:calc(100% - 22px);}
+      .search-tools{gap:8px;}
+      .search-row{padding:11px 12px;border-radius:17px;}
+      .filter-open-btn{width:48px;height:48px;flex-basis:48px;border-radius:16px;}
+      .command{padding:14px;}
+      .community-copy{padding:30px 20px;}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="liquid"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
+  <header class="topbar"><div class="top-inner"><a href="#" class="brand"><img class="bot-icon" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&is=6a48b5de&hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&" alt="Vic Michaelis bot icon"><span class="brand-text"><strong>Vic Michaelis</strong><span>A Very Important Discord Bot</span></span></a><nav class="nav"><a href="#home"><i class="fa-solid fa-house"></i>Home</a><a href="#features"><i class="fa-solid fa-star"></i>Features</a><a href="#commands"><i class="fa-solid fa-terminal"></i>Commands</a></nav><div class="top-actions"><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite</a></div></div></header>
+  <main>
+    <section id="home" class="hero"><div class="hero-grid"><div><span class="eyebrow"><i class="fa-solid fa-star"></i> an all-in-one bot, just for you</span><h1>Make your server <span class="mark">very important.</span></h1><p>Vic Michaelis brings pet care, macaron currency, pet rooms, gacha, games, mail, quests, and more into your server.</p><div class="hero-actions"><a class="btn btn-main" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a><a class="btn btn-ghost" href="#commands"><i class="fa-solid fa-magnifying-glass"></i>Browse commands</a></div></div>
+      <div class="showcase"><article class="preview-card" id="previewCard"><div class="slide-window"><div class="slide-track" id="slideTrack">
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Earn macarons</div><h2 class="preview-title">Host a Very Important Interview</h2><p class="preview-copy">Host a Very Important People-style interview and earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/host</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&is=6a48b5de&hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 6:42 PM</span></div><div class="embed"><div class="embed-title">A Very Important Interview</div><div class="embed-desc"><span style="color:#F6B8B8">@you</span> hosts Vic Michaelis on a very important interview. The lights turn on, you complete the interview, and you recieve macarons.</div><div class="fields"><div class="field"><strong>reward</strong>+450 macarons</div></div></div></div></div></div></div></div>
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Feed Your Pet</div><h2 class="preview-title">Immersive Pet Feeding</h2><p class="preview-copy">Feed your pet gacha items, or a cooked meal giving them hunger, happiness and energy.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/feedpet</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&is=6a48b5de&hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 8:17 PM</span></div><div class="embed"><div class="embed-title">You fed Vic Michaelis!</div><div class="embed-desc"><em>Vic settles in and eats strawberry shortcake. they seem especially pleased.</em><br>hunger gained: +28 · happiness gained: +8 · energy gained: +3</div><div class="fields"><div class="field"><strong>current stats</strong>hunger 86/100<br>happiness 42/50</div><div class="field"><strong>bonus</strong>recipe mastery +3%</div></div></div></div></div></div></div></div>
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Daily Rewards</div><h2 class="preview-title">Claim Your Daily Macarons</h2><p class="preview-copy">Give your members a quick and easy daily activity to earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/claimdaily</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&is=6a48b5de&hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 10:03 PM</span></div><div class="embed"><div class="embed-title">your daily has been claimed !</div><div class="fields"><div class="field"><strong>reward</strong>250 macarons</div><div class="field"><strong>new balance</strong>12,950 macarons</div></div><div class="embed-btns"><button class="embed-btn">Remind Me</button></div></div></div></div></div></div></div>
+      </div></div><div class="dots" id="dots"><button class="dot active" data-i="0"></button><button class="dot" data-i="1"></button><button class="dot" data-i="2"></button></div></article></div></div></section>
+    <section class="wrap section"><div class="stats"><div class="marquee" id="marquee"></div></div></section>
+    <section id="features" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-layer-group"></i>Everything you need, in one bot</span><h2 class="section-title">Made for cozy daily loops.</h2><p class="section-copy">The bot has features for pets, rewards, collecting, rooms, and social systems, so users always have something to do.</p></div><div class="features-grid"><article class="feature-card tall"><h3>Pet Care That Feels Alive</h3><p>Pets have hunger, happiness, energy, trust, professions, dates, letters, rooms, and routines. The big pet command branches into quick actions and longer progression.</p><div class="care-list"><div class="care-item"><strong>/pet cuddle</strong><span>Cuddle your pet for happiness</span></div><div class="care-item"><strong>/pet walk</strong><span>Take your pet on a short walk.</span></div><div class="care-item"><strong>/pet fetch</strong><span>Play fetch with your pet</span></div><div class="care-item"><strong>/pet praise</strong><span>Praise your pet to boost stats</span></div><div class="care-item"><strong>/pet draw</strong><span>Draw with your pet for happiness and XP.</span></div><div class="care-item"><strong>/pet trivia</strong><span>Answer trivia for boosts and macarons</span></div><div class="care-item"><strong>/pet job</strong><span>Send your pet to earn macarons.</span></div><div class="care-item"><strong>/pet scavenge</strong><span>Gather materials for furniture crafting.</span></div><div class="care-item"><strong>/feedpet</strong><span>Feed meals, snacks, and cooked recipes.</span></div><div class="care-item"><strong>/pettrust</strong><span>Check your long-term trust bar.</span></div><div class="care-item"><strong>/pet nap</strong><span>Restore energy with a cozy rest.</span></div><div class="care-item"><strong>/pet sleep</strong><span>Let your pet fully recharge.</span></div><div class="care-item"><strong>/pet trick</strong><span>Practice a small trick together.</span></div><div class="care-item"><strong>/pet treat</strong><span>Feed your pet a quick treat.</span></div></div></article><div class="side-stack"><article class="feature-card"><h3>Macaron Economy</h3><p>Work, claim daily rewards, collect drops, trace constellations, listen to music, and exchange currency into upgrade points.</p><div class="mini-cmds"><span>/balance</span><span>/work</span><span>/claimdaily</span><span>/currencyexchange</span></div></article><article class="feature-card"><h3>Gacha Systems</h3><p>Roll once, roll ten times, discover items, inspect inventory, sell, gift, trade, and build a collection over time.</p><div class="mini-cmds"><span>/gacha</span><span>/gachaten</span><span>/listall</span><span>/inventory</span></div></article><article class="feature-card"><h3>Vic Michaelis Premium</h3><p>Premium adds smoother progression: bonus macarons, extra pet XP, more scavenge charges, quest refreshes, auto-cooked meals, and discounted pet sitting.</p><div class="mini-cmds"><span>+10% macarons</span><span>+50% pet XP</span><span>5 scavenges</span><span>quest refreshes</span></div></article></div></div></section>
+    <section id="commands" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-terminal"></i>Command reference</span><h2 class="section-title">Search all 73 slash commands.</h2><p class="section-copy">Grouped by categories for your convenience.</p></div><div class="command-shell" id="commandShell"><div class="commands-panel" id="commandsPanel"><div class="search-tools"><div class="search-row"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Search commands, categories, or descriptions"></div><button class="filter-open-btn" id="filterToggle" type="button" aria-expanded="false" aria-label="Open command filters"><i class="fa-solid fa-filter"></i></button></div><div class="command-layout"><div class="command-main"><div class="cmd-grid" id="commandGrid"></div></div></div></div><aside class="filter-sidebar" id="filterSidebar" aria-label="Command filters"><div class="filter-side-head"><span><i class="fa-solid fa-sliders"></i> Categories</span><button class="filter-close" id="filterClose" type="button" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button></div><div class="filters" id="filters"></div></aside></div></section>
+    <section id="invite" class="wrap cta"><div class="cta-card"><h3>Invite Vic today for free.</h3><p>Invite Vic Michaelis and upgrade your Discord server with 70+ registered commands ready to use at your convenience.</p><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a></div></section>
+  </main><footer><div class="wrap foot"><div><span class="footer-name">Vic Michaelis</span> <span class="copyright">© 2026</span></div><div class="foot-links"><a href="#features">Features</a><a href="#commands">Commands</a><a href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands">Invite</a></div></div></footer>
+<script>
+const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands";
+document.querySelectorAll('a[href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands"]').forEach(a=>a.href=inviteUrl);
+const commands = [{"cat": "General", "name": "/help", "desc": "Open the in-Discord help menu.", "group": "General", "sub": "Help"}, {"cat": "Pets", "name": "/petselect", "desc": "Browse pets, choose one, set gender, and name it.", "group": "Pets", "sub": "Getting Started"}, {"cat": "Pets", "name": "/custompet", "desc": "Add, list, select, or remove custom pets.", "group": "Pets", "sub": "Getting Started", "subs": ["add", "list", "select", "remove"]}, {"cat": "Pets", "name": "/petcare", "desc": "Learn hunger, happiness, energy, moods, and basic care.", "group": "Pets", "sub": "Getting Started"}, {"cat": "Pets", "name": "/petcareplus", "desc": "Open the advanced Pet Care Plus hub.", "group": "Pets", "sub": "Getting Started"}, {"cat": "General", "name": "/botsettings", "desc": "Customize personal notifications and bot behavior.", "group": "General", "sub": "Help"}, {"cat": "General", "name": "/cooldowns", "desc": "See active cooldowns and what you can do next.", "group": "General", "sub": "Help"}, {"cat": "General", "name": "/detailedstats", "desc": "View deeper bot stats and rates.", "group": "General", "sub": "Help"}, {"cat": "Pets", "name": "/pet", "desc": "Cuddle, walk, fetch, praise, draw, trick, treat, nap, sleep, trivia, job, or scavenge.", "group": "Pets", "sub": "Care", "subs": ["cuddle", "walk", "fetch", "praise", "draw", "trick", "treat", "nap", "sleep", "trivia", "job", "scavenge"]}, {"cat": "Pets", "name": "/feedpet", "desc": "Feed your pet food, cooked meals, or valid items.", "group": "Pets", "sub": "Care"}, {"cat": "Pets", "name": "/cook", "desc": "Cook pet recipes, drinks, and special seasonal meals.", "group": "Pets", "sub": "Care"}, {"cat": "Pets", "name": "/autofeeder", "desc": "Configure automatic feeding with selected foods.", "group": "Pets", "sub": "Care"}, {"cat": "Pets", "name": "/cryostasis", "desc": "Pause stat decay with the cryostasis pod.", "group": "Pets", "sub": "Care"}, {"cat": "Pets", "name": "/petstats", "desc": "View pet XP, upgrades, and current care state.", "group": "Pets", "sub": "Progression"}, {"cat": "Pets", "name": "/pettrust", "desc": "View long-term trust built through care.", "group": "Pets", "sub": "Progression"}, {"cat": "Pets", "name": "/petprofession", "desc": "Check profession progress and identity growth.", "group": "Pets", "sub": "Progression"}, {"cat": "Pets", "name": "/changepetgender", "desc": "Change your pet’s gender.", "group": "Pets", "sub": "Management"}, {"cat": "Pets", "name": "/removepet", "desc": "Remove an active pet with confirmation.", "group": "Pets", "sub": "Management"}, {"cat": "Pets", "name": "/petletter", "desc": "Read saved letters sent by your pet.", "group": "Pets", "sub": "Progression"}, {"cat": "Pets", "name": "/friendship", "desc": "View pet social bonds and friendship progress.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/playdate", "desc": "Request a playdate with another pet.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/date", "desc": "Ask another pet to date your pet.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/datenight", "desc": "Send dating pets on a date night.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/marry", "desc": "Propose marriage between dating pets.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/divorce", "desc": "Divorce a pet spouse.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/breakup", "desc": "Break up with a dating partner.", "group": "Pets", "sub": "Social"}, {"cat": "Pets", "name": "/petroom", "desc": "View or visit decorated pet rooms.", "group": "Pets", "sub": "Housing", "subs": ["view", "visit"]}, {"cat": "Pets", "name": "/furniturecraft", "desc": "Craft furniture from scavenge materials.", "group": "Pets", "sub": "Housing"}, {"cat": "Pets", "name": "/neighborhood", "desc": "View neighborhood events connected to pet rooms.", "group": "Pets", "sub": "Housing"}, {"cat": "Pets", "name": "/neighboorhodmap", "desc": "View the pet room neighborhood map.", "group": "Pets", "sub": "Housing"}, {"cat": "Pets", "name": "/recipemastery", "desc": "Track recipe mastery and food effectiveness.", "group": "Pets", "sub": "Cooking"}, {"cat": "Pets", "name": "/serve", "desc": "Make a bubble tea order.", "group": "Pets", "sub": "Cooking"}, {"cat": "Pets", "name": "/orderup", "desc": "Take a restaurant-style bubble tea order.", "group": "Pets", "sub": "Cooking"}, {"cat": "Economy", "name": "/work", "desc": "Start a work shift to earn macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/claimdaily", "desc": "Claim your daily macaron reward.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/collect", "desc": "Collect dropped macarons in the current channel.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/dig", "desc": "Dig for macarons with an animation.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/forage", "desc": "Forage for hidden macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/stargaze", "desc": "Stargaze for macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/moonlight", "desc": "Walk through moonlight for macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/signal", "desc": "Catch a mysterious signal for macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/constellation", "desc": "Trace constellations for rewards.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/debug", "desc": "Debug fictional code for macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/host", "desc": "Host a Very Important People interview.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/listen", "desc": "Listen to music for macarons.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/currencyexchange", "desc": "Exchange macarons and upgrade points.", "group": "Economy", "sub": "Earning"}, {"cat": "Economy", "name": "/balance", "desc": "Check macarons and upgrade points.", "group": "Economy", "sub": "Balance"}, {"cat": "Economy", "name": "/store", "desc": "Open the main shop.", "group": "Economy", "sub": "Store"}, {"cat": "Economy", "name": "/purchase", "desc": "Buy items by name, number, or dropdown.", "group": "Economy", "sub": "Store"}, {"cat": "Economy", "name": "/sell", "desc": "Sell items through the market.", "group": "Economy", "sub": "Store"}, {"cat": "Economy", "name": "/gift", "desc": "Gift store items to another user.", "group": "Economy", "sub": "Trading"}, {"cat": "Economy", "name": "/donate", "desc": "Donate macarons to another user.", "group": "Economy", "sub": "Trading"}, {"cat": "Economy", "name": "/trade", "desc": "Trade items with another user.", "group": "Economy", "sub": "Trading"}, {"cat": "Economy", "name": "/inventory", "desc": "View gacha, store, food, and scavenge inventories.", "group": "Economy", "sub": "Inventory"}, {"cat": "Economy", "name": "/useitem", "desc": "Use purchased store items.", "group": "Economy", "sub": "Inventory"}, {"cat": "Economy", "name": "/upgrades", "desc": "Open the pet upgrade store.", "group": "Economy", "sub": "Inventory"}, {"cat": "Collecting", "name": "/gacha", "desc": "Roll the gacha once.", "group": "Collecting", "sub": "Gacha"}, {"cat": "Collecting", "name": "/gachaten", "desc": "Roll the gacha ten times.", "group": "Collecting", "sub": "Gacha"}, {"cat": "Collecting", "name": "/listall", "desc": "List discovered gacha items.", "group": "Collecting", "sub": "Gacha"}, {"cat": "Collecting", "name": "/view item", "desc": "View item details.", "group": "Collecting", "sub": "Items"}, {"cat": "Games", "name": "/slots", "desc": "Play the slot machine with macarons.", "group": "Games", "sub": "Casino"}, {"cat": "Games", "name": "/roulette", "desc": "Play roulette with macarons.", "group": "Games", "sub": "Casino"}, {"cat": "Games", "name": "/blackjack", "desc": "Play blackjack with macarons.", "group": "Games", "sub": "Casino"}, {"cat": "Games", "name": "/vicmichaelisdle", "desc": "Play the daily Vic Michaelis word puzzle.", "group": "Games", "sub": "Puzzles"}, {"cat": "Community", "name": "/mail", "desc": "View or send mailbox mail.", "group": "Community", "sub": "Mail", "subs": ["view", "send"]}, {"cat": "Community", "name": "/mailbox", "desc": "Open inbox and saved mail.", "group": "Community", "sub": "Mail"}, {"cat": "Community", "name": "/messages", "desc": "View message counts.", "group": "Community", "sub": "Social"}, {"cat": "Community", "name": "/gif", "desc": "Send, add, delete, or list GIFs.", "group": "Community", "sub": "Media"}, {"cat": "Community", "name": "/gamingtime", "desc": "Send gaming invitations with voice/game autofill.", "group": "Community", "sub": "Social"}, {"cat": "Progress", "name": "/quests", "desc": "View daily and weekly quests.", "group": "Progress", "sub": "Quests"}, {"cat": "Progress", "name": "/achievements", "desc": "View long-term milestones.", "group": "Progress", "sub": "Achievements"}, {"cat": "Progress", "name": "/leaderboard", "desc": "View macaron or pet-age leaderboards.", "group": "Progress", "sub": "Leaderboards"}, {"cat": "Progress", "name": "/refreshcooldowns", "desc": "Refresh another user’s cooldowns when permitted.", "group": "Progress", "sub": "Utility"}];
+const subcommandDescriptions = {
+  "/custompet add":"Add a custom pet entry.",
+  "/custompet list":"View custom pets that are available.",
+  "/custompet select":"Select one of your custom pets.",
+  "/custompet remove":"Remove a custom pet entry.",
+  "/pet cuddle":"Give your pet happiness through a cozy interaction.",
+  "/pet walk":"Take your pet on a walk for happiness and flavor.",
+  "/pet fetch":"Play fetch with your pet for happiness.",
+  "/pet praise":"Praise your pet to build happiness and trust.",
+  "/pet draw":"Draw with your pet for happiness and XP.",
+  "/pet trick":"Teach or practice a trick with your pet.",
+  "/pet treat":"Give your pet a small treat.",
+  "/pet nap":"Restore energy with a shorter rest.",
+  "/pet sleep":"Restore energy through a longer sleep-style action.",
+  "/pet trivia":"Play pet trivia for macarons and pet boosts.",
+  "/pet job":"Send your pet on a small job for rewards.",
+  "/pet scavenge":"Send your pet out to find furniture-crafting materials.",
+  "/petroom view":"View your pet room or another user’s room.",
+  "/petroom visit":"Visit another user’s pet room.",
+  "/mail view":"View mailbox mail.",
+  "/mail send":"Open the send-mail form.",
+  "/view item":"View details about an item."
+};
+const commandEntries = commands.flatMap(c => {
+  if (Array.isArray(c.subs) && c.subs.length) {
+    return c.subs.map(sub => {
+      const fullName = `${c.name} ${sub}`;
+      return { ...c, name: fullName, parent: c.name, desc: subcommandDescriptions[fullName] || c.desc };
+    });
+  }
+  return [c];
+});
+const cats = ['All', ...Array.from(new Set(commandEntries.map(c => c.group || c.cat)))];
+const subcatsByCat = Object.fromEntries(cats.filter(c => c !== 'All').map(cat => [cat, Array.from(new Set(commandEntries.filter(c => (c.group || c.cat) === cat).map(c => c.sub || 'General')))]));
+let selectedCats = new Set(['All']);
+let selectedSubs = {};
+const filters=document.getElementById('filters'), grid=document.getElementById('commandGrid'), search=document.getElementById('search'), commandsPanel=document.getElementById('commandsPanel'), commandShell=document.getElementById('commandShell'), filterSidebar=document.getElementById('filterSidebar'), filterToggle=document.getElementById('filterToggle'), filterClose=document.getElementById('filterClose');
+function isAllSelected(){ return selectedCats.has('All') || selectedCats.size === 0; }
+function subSet(cat){
+  if(!(selectedSubs[cat] instanceof Set)) selectedSubs[cat] = new Set(selectedSubs[cat] ? [selectedSubs[cat]] : []);
+  return selectedSubs[cat];
+}
+function renderFilters(){
+  filters.innerHTML=cats.map(c=>{
+    const hasSubs=c!=='All' && (subcatsByCat[c] || []).length>1;
+    const active=isAllSelected()?c==='All':selectedCats.has(c);
+    const open=active && hasSubs;
+    const selectedSet=hasSubs ? subSet(c) : new Set();
+    const subs=hasSubs ? `<div class="sub-menu-inline">${subcatsByCat[c].map(sub => `<button class="sub-option ${selectedSet.has(sub)?'active':''}" data-cat="${c}" data-sub="${sub}">${sub}</button>`).join('')}</div>` : '';
+    const chev=hasSubs ? `<i class="fa-solid ${open?'fa-chevron-up':'fa-chevron-down'} chev" aria-hidden="true"></i>` : '';
+    return `<div class="filter-wrap ${open?'open':''}"><button class="filter ${active?'active':''}" data-cat="${c}"><span>${c}</span>${chev}</button>${subs}</div>`;
+  }).join('');
+}
+function setCategory(cat){
+  if(cat === 'All'){
+    selectedCats = new Set(['All']);
+    selectedSubs = {};
+  } else {
+    selectedCats.delete('All');
+    if(selectedCats.has(cat)){
+      selectedCats.delete(cat);
+      delete selectedSubs[cat];
+    } else {
+      selectedCats.add(cat);
+    }
+    if(selectedCats.size === 0){
+      selectedCats = new Set(['All']);
+      selectedSubs = {};
+    }
+  }
+  animateCommandRefresh();
+  renderFilters();
+}
+function setSubcategory(cat, sub){
+  selectedCats.delete('All');
+  selectedCats.add(cat);
+  const set=subSet(cat);
+  if(set.has(sub)) set.delete(sub); else set.add(sub);
+  if(set.size === 0) delete selectedSubs[cat];
+  animateCommandRefresh();
+  renderFilters();
+}
+function animateCommandRefresh(){
+  grid.classList.remove('searching','no-animate');
+  grid.classList.add('switching');
+  setTimeout(()=>{ renderCommands({animate:true}); grid.classList.remove('switching'); }, 120);
+}
+function renderCommands(options={}){
+  const animate = options.animate !== false;
+  const q=search.value.toLowerCase().trim();
+  const all=isAllSelected();
+  const list=commandEntries.filter(c=>{
+    const group=(c.group||c.cat);
+    const sub=(c.sub||'General');
+    const categoryOk = all || selectedCats.has(group);
+    const set = selectedSubs[group] instanceof Set ? selectedSubs[group] : new Set(selectedSubs[group] ? [selectedSubs[group]] : []);
+    const subOk = all || set.size === 0 || set.has(sub);
+    const searchOk = !q || (c.name+' '+c.desc+' '+group+' '+sub+' '+((c.subs||[]).join(' '))).toLowerCase().includes(q);
+    return categoryOk && subOk && searchOk;
+  });
+  grid.innerHTML=list.map((c,i)=>`<article class="command" ${animate ? `style="animation-delay:${Math.min(i,10)*18}ms"` : ``}><div class="cmd-name">${c.name}</div><div class="cmd-desc">${c.desc}</div>${c.parent ? `<div class="cmd-parent">Subcommand of ${c.parent}</div>` : ''}<span class="cmd-meta"><span class="cmd-cat">${c.group || c.cat}</span><span class="cmd-sub">${c.sub || 'General'}</span></span></article>`).join('') || `<article class="command"><div class="cmd-name">No commands found</div><div class="cmd-desc">Try another search, category, or subcategory.</div></article>`;
+}
+filters.addEventListener('click',e=>{
+  const subOpt=e.target.closest('.sub-option');
+  if(subOpt){ setSubcategory(subOpt.dataset.cat, subOpt.dataset.sub); return; }
+  const btn=e.target.closest('.filter');
+  if(btn) setCategory(btn.dataset.cat);
+});
+function openFilters(){
+  commandShell.classList.remove('filter-closing');
+  commandShell.classList.add('filter-open');
+  filterToggle.classList.add('active');
+  filterToggle.setAttribute('aria-expanded','true');
+  filterSidebar.style.animation = 'none';
+  void filterSidebar.offsetWidth;
+  filterSidebar.style.animation = '';
+}
+function closeFilters(){
+  if(!commandShell.classList.contains('filter-open')) return;
+  commandShell.classList.remove('filter-open');
+  commandShell.classList.add('filter-closing');
+  filterToggle.classList.remove('active');
+  filterToggle.setAttribute('aria-expanded','false');
+  window.setTimeout(()=>commandShell.classList.remove('filter-closing'), 290);
+}
+filterToggle.addEventListener('click',()=>{
+  if(commandShell.classList.contains('filter-open')) closeFilters();
+  else openFilters();
+});
+filterClose.addEventListener('click',closeFilters);
+search.addEventListener('input',()=>{
+  grid.classList.remove('switching');
+  grid.classList.add('searching','no-animate');
+  renderCommands({animate:false});
+});
+renderFilters(); renderCommands();
+const track=document.getElementById('slideTrack'), dots=[...document.querySelectorAll('.dot')], card=document.getElementById('previewCard');
+let slide=0, lock=false; const slides=[...document.querySelectorAll('.slide')];
+function resetDragStyles(){
+  slides.forEach(s=>{
+    s.style.transform='';
+    s.style.opacity='';
+    s.style.visibility='';
+    s.style.zIndex='';
+  });
+}
+function setSlide(i){
+  resetDragStyles();
+  slide=(i+dots.length)%dots.length;
+  slides.forEach((s,idx)=>{
+    const isActive = idx===slide;
+    const isNext = idx===((slide+1)%slides.length);
+    const isPrev = idx===((slide-1+slides.length)%slides.length);
+    s.classList.toggle('active-slide', isActive);
+    s.classList.toggle('next-slide', isNext);
+    s.classList.toggle('prev-slide', isPrev && !isActive && !isNext);
+  });
+  dots.forEach((d,idx)=>d.classList.toggle('active',idx===slide));
+}
+function renderDrag(dx){
+  const maxDrag = 280;
+  const drag = Math.max(-maxDrag, Math.min(maxDrag, dx));
+  const progress = Math.min(1, Math.abs(drag) / 180);
+  const active = slides[slide];
+  const next = slides[(slide+1)%slides.length];
+  const prev = slides[(slide-1+slides.length)%slides.length];
+  slides.forEach(s=>{
+    s.style.visibility='hidden';
+    s.style.opacity='0';
+    s.style.zIndex='0';
+  });
+  active.style.visibility='visible';
+  active.style.opacity=String(1 - progress * .18);
+  active.style.zIndex='3';
+  active.style.transform=`translateX(${drag}px) rotate(${drag*.012}deg) scale(${1 - progress*.05})`;
+  if(drag < 0){
+    next.style.visibility='visible';
+    next.style.opacity=String(.34 + progress * .58);
+    next.style.zIndex='2';
+    next.style.transform=`translateX(calc(92% + ${drag*1.12}px)) translateY(${10 - progress*10}px) rotate(${7 - progress*7}deg) scale(${.74 + progress*.24})`;
+  } else if(drag > 0){
+    prev.style.visibility='visible';
+    prev.style.opacity=String(.22 + progress * .55);
+    prev.style.zIndex='1';
+    prev.style.transform=`translateX(calc(-92% + ${drag*1.12}px)) translateY(${10 - progress*10}px) rotate(${-7 + progress*7}deg) scale(${.74 + progress*.24})`;
+  } else {
+    next.style.visibility='visible';
+    next.style.opacity='.34';
+    next.style.zIndex='1';
+    next.style.transform='translateX(92%) translateY(10px) rotate(7deg) scale(.74)';
+  }
+  return { drag, progress };
+}
+dots.forEach(d=>d.addEventListener('click',()=>setSlide(Number(d.dataset.i))));
+card.addEventListener('wheel',e=>{e.preventDefault(); if(lock) return; lock=true; setSlide(slide+(e.deltaY>0?1:-1)); setTimeout(()=>lock=false,620);},{passive:false});
+let dragStartX=0, dragStartY=0, dragging=false, dragMoved=false, dragAutoLock=false;
+card.addEventListener('pointerdown', e=>{
+  if(e.button !== 0) return;
+  e.preventDefault();
+  window.getSelection?.().removeAllRanges?.();
+  dragStartX=e.clientX; dragStartY=e.clientY; dragging=true; dragMoved=false; dragAutoLock=false;
+  card.classList.add('dragging');
+  document.body.classList.add('preview-dragging');
+  card.setPointerCapture?.(e.pointerId);
+});
+card.addEventListener('pointermove', e=>{
+  if(!dragging) return;
+  const dx=e.clientX-dragStartX, dy=e.clientY-dragStartY;
+  if(Math.abs(dx)>4 && Math.abs(dx)>Math.abs(dy)){
+    dragMoved=true;
+    e.preventDefault();
+    const state = renderDrag(dx);
+    if(!dragAutoLock && Math.abs(state.drag) >= 248){
+      dragAutoLock = true;
+      const direction = state.drag < 0 ? 1 : -1;
+      dragging = false;
+      dragMoved = false;
+      card.classList.remove('dragging');
+      document.body.classList.remove('preview-dragging');
+      window.getSelection?.().removeAllRanges?.();
+      card.releasePointerCapture?.(e.pointerId);
+      setSlide(slide + direction);
+      window.setTimeout(()=>{ dragAutoLock = false; }, 180);
+      return;
+    }
+  }
+});
+function finishPreviewDrag(e){
+  if(!dragging) return;
+  const dx=e.clientX-dragStartX, dy=e.clientY-dragStartY;
+  dragging=false; dragAutoLock=false;
+  card.classList.remove('dragging');
+  document.body.classList.remove('preview-dragging');
+  window.getSelection?.().removeAllRanges?.();
+  card.releasePointerCapture?.(e.pointerId);
+  if(Math.abs(dx)>75 && Math.abs(dx)>Math.abs(dy)){
+    setSlide(slide+(dx<0?1:-1));
+  } else {
+    setSlide(slide);
+  }
+}
+card.addEventListener('pointerup', finishPreviewDrag);
+card.addEventListener('pointercancel', e=>{dragging=false; dragAutoLock=false; card.classList.remove('dragging'); document.body.classList.remove('preview-dragging'); window.getSelection?.().removeAllRanges?.(); card.releasePointerCapture?.(e.pointerId); setSlide(slide);});
+card.addEventListener('dragstart', e=>e.preventDefault());
+card.addEventListener('selectstart', e=>{ if(dragging){ e.preventDefault(); } });
+card.addEventListener('click', e=>{ if(dragMoved){ e.preventDefault(); e.stopPropagation(); dragMoved=false; } }, true);
+setSlide(0);
+
+const navLinks=[...document.querySelectorAll('.nav a[href^="#"]')];
+const sectionMap=navLinks.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+function updateActiveNav(){
+  const marker = window.scrollY + Math.min(220, window.innerHeight * 0.34);
+  let current = sectionMap[0] || null;
+  sectionMap.forEach(item=>{
+    const top = item.el.getBoundingClientRect().top + window.scrollY;
+    if(marker >= top) current = item;
+  });
+  navLinks.forEach(a=>a.classList.toggle('active', Boolean(current && a === current.a)));
+}
+let navTick=false;
+window.addEventListener('scroll',()=>{
+  if(navTick) return;
+  navTick=true;
+  requestAnimationFrame(()=>{updateActiveNav(); navTick=false;});
+},{passive:true});
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
+
+const chips=[
+  {icon:'fa-solid fa-microphone-lines', name:'/host', cat:'Economy'},
+  {icon:'fa-solid fa-bowl-food', name:'/feedpet', cat:'Pets'},
+  {icon:'fa-solid fa-calendar-check', name:'/claimdaily', cat:'Economy'},
+  {icon:'fa-solid fa-paw', name:'/pet', cat:'Pets'},
+  {icon:'fa-solid fa-gem', name:'/gacha', cat:'Collecting'},
+  {icon:'fa-solid fa-house-chimney-window', name:'/petroom', cat:'Pets'},
+  {icon:'fa-solid fa-store', name:'/store', cat:'Economy'},
+  {icon:'fa-solid fa-star', name:'/achievements', cat:'Progress'},
+  {icon:'fa-solid fa-envelope', name:'/mail', cat:'Community'},
+  {icon:'fa-solid fa-dice', name:'/slots', cat:'Games'}
+]; document.getElementById('marquee').innerHTML=chips.concat(chips).map(c=>`<div class="chip"><div class="chip-i"><i class="${c.icon}"></i></div><div><p>${c.name}</p><span>${c.cat}</span></div></div>`).join('');
+</script>
+</body>
+</html>
