@@ -259,28 +259,39 @@
     .wave:nth-child(2){bottom:-238px;width:max(1350px,198vw);height:390px;opacity:.43;left:46%}
     .wave:nth-child(3){bottom:-158px;width:max(1540px,220vw);height:350px;opacity:.27;left:56%}
     @keyframes wave{50%{transform:translateX(-48%) rotate(1.2deg)}}
-    @keyframes categoryPanelOpen{0%{opacity:0;transform:translateX(28px) translateY(10px) scale(.97);filter:saturate(.86) blur(1px)}68%{opacity:1;transform:translateX(-3px) translateY(0) scale(1.006);filter:saturate(1) blur(0)}100%{opacity:1;transform:translateX(0) translateY(0) scale(1);filter:none}}
-    @keyframes categorySheetOpen{0%{opacity:0;transform:translateY(42px) scale(.97);filter:saturate(.86) blur(1px)}70%{opacity:1;transform:translateY(-4px) scale(1.004);filter:saturate(1) blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:none}}
+    @keyframes categoryPanelOpen{0%{opacity:0;transform:translateX(30px) translateY(10px) scale(.96);filter:saturate(.86) blur(1px)}66%{opacity:1;transform:translateX(-4px) translateY(0) scale(1.008);filter:saturate(1) blur(0)}100%{opacity:1;transform:translateX(0) translateY(0) scale(1);filter:none}}
+    @keyframes categoryPanelClose{0%{opacity:1;transform:translateX(0) translateY(0) scale(1);filter:none}100%{opacity:0;transform:translateX(24px) translateY(8px) scale(.97);filter:saturate(.86) blur(.7px)}}
+    @keyframes categorySheetOpen{0%{opacity:0;transform:translateY(46px) scale(.965);filter:saturate(.86) blur(1px)}70%{opacity:1;transform:translateY(-4px) scale(1.004);filter:saturate(1) blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:none}}
+    @keyframes categorySheetClose{0%{opacity:1;transform:translateY(0) scale(1);filter:none}100%{opacity:0;transform:translateY(36px) scale(.975);filter:saturate(.9) blur(.7px)}}
     @keyframes categoryItemIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
     @keyframes categoryHeaderIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
-    .command-shell.filter-open .filter-sidebar{animation:categoryPanelOpen .4s cubic-bezier(.18,.9,.2,1) both!important}
-    .command-shell.filter-open .filter-side-head{animation:categoryHeaderIn .24s ease both}
-    .command-shell.filter-open .filter-sidebar .filter-wrap{animation:categoryItemIn .28s ease both}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(1){animation-delay:.03s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(2){animation-delay:.06s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(3){animation-delay:.09s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(4){animation-delay:.12s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(5){animation-delay:.15s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(6){animation-delay:.18s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(7){animation-delay:.21s}
-    .command-shell.filter-open .filter-sidebar .filter-wrap:nth-child(8){animation-delay:.24s}
+    @keyframes categoryPillSelect{0%{transform:scale(.985)}55%{transform:scale(1.035)}100%{transform:scale(1)}}
+    @keyframes categoryPillDeselect{0%{transform:scale(1.018)}100%{transform:scale(1)}}
+    .command-shell.filter-open.filter-opening .filter-sidebar{animation:categoryPanelOpen .42s cubic-bezier(.18,.9,.2,1) both!important}
+    .command-shell.filter-closing:not(.filter-open) .filter-sidebar{animation:categoryPanelClose .3s ease both!important}
+    .command-shell.filter-open.filter-opening .filter-side-head{animation:categoryHeaderIn .24s ease both}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap{animation:categoryItemIn .28s ease both}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(1){animation-delay:.03s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(2){animation-delay:.06s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(3){animation-delay:.09s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(4){animation-delay:.12s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(5){animation-delay:.15s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(6){animation-delay:.18s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(7){animation-delay:.21s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(8){animation-delay:.24s}
+    .filter-sidebar .filter.pill-selected{animation:categoryPillSelect .24s cubic-bezier(.18,.9,.2,1) both}
+    .filter-sidebar .filter.pill-unselected{animation:categoryPillDeselect .18s ease both}
+    .filter-sidebar .sub-option.pill-selected{animation:categoryPillSelect .22s cubic-bezier(.18,.9,.2,1) both}
+    .filter-sidebar .sub-option.pill-unselected{animation:categoryPillDeselect .16s ease both}
+    .command-shell.filter-open:not(.filter-opening) .filter-sidebar{animation:none!important}
     @media(max-width:980px){
       .wave{bottom:-324px;width:max(980px,245vw);height:430px}
       .wave:nth-child(2){bottom:-252px;width:max(1120px,285vw);height:390px;left:44%}
       .wave:nth-child(3){bottom:-172px;width:max(1280px,325vw);height:350px;left:57%}
       .command-shell.filter-open .filter-sidebar,
       .command-shell.filter-closing:not(.filter-open) .filter-sidebar{position:fixed!important;left:12px!important;right:12px!important;top:auto!important;bottom:14px!important;width:auto!important;max-height:min(74dvh,620px)!important;margin:0!important;z-index:80!important;overflow-y:auto!important;overscroll-behavior:contain!important;box-shadow:0 28px 90px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.06)!important;background:rgba(24,10,18,.96)!important;backdrop-filter:blur(18px)!important}
-      .command-shell.filter-open .filter-sidebar{animation:categorySheetOpen .4s cubic-bezier(.18,.9,.2,1) both!important}
+      .command-shell.filter-open.filter-opening .filter-sidebar{animation:categorySheetOpen .42s cubic-bezier(.18,.9,.2,1) both!important}
+      .command-shell.filter-closing:not(.filter-open) .filter-sidebar{animation:categorySheetClose .3s ease both!important}
       .command-shell.filter-open::after{content:"";position:fixed;inset:0;background:rgba(12,5,10,.38);backdrop-filter:blur(3px);z-index:70}
       .command-shell.filter-open .commands-panel{position:relative;z-index:1}
       .filter-side-head{position:sticky;top:0;z-index:2;background:linear-gradient(180deg,rgba(24,10,18,.98),rgba(24,10,18,.9));padding-bottom:10px;border-bottom:1px solid rgba(255,221,200,.12)}
@@ -358,18 +369,26 @@ function subSet(cat){
   if(!(selectedSubs[cat] instanceof Set)) selectedSubs[cat] = new Set(selectedSubs[cat] ? [selectedSubs[cat]] : []);
   return selectedSubs[cat];
 }
+let lastPillChange=null;
 function renderFilters(){
   filters.innerHTML=cats.map(c=>{
     const hasSubs=c!=='All' && (subcatsByCat[c] || []).length>1;
     const active=isAllSelected()?c==='All':selectedCats.has(c);
     const open=active && hasSubs;
     const selectedSet=hasSubs ? subSet(c) : new Set();
-    const subs=hasSubs ? `<div class="sub-menu-inline">${subcatsByCat[c].map(sub => `<button class="sub-option ${selectedSet.has(sub)?'active':''}" data-cat="${c}" data-sub="${sub}">${sub}</button>`).join('')}</div>` : '';
+    const pillClass=lastPillChange && lastPillChange.type==='cat' && lastPillChange.cat===c ? (lastPillChange.active?'pill-selected':'pill-unselected') : '';
+    const subs=hasSubs ? `<div class="sub-menu-inline">${subcatsByCat[c].map(sub => {
+      const subActive=selectedSet.has(sub);
+      const subPillClass=lastPillChange && lastPillChange.type==='sub' && lastPillChange.cat===c && lastPillChange.sub===sub ? (lastPillChange.active?'pill-selected':'pill-unselected') : '';
+      return `<button class="sub-option ${subActive?'active':''} ${subPillClass}" data-cat="${c}" data-sub="${sub}">${sub}</button>`;
+    }).join('')}</div>` : '';
     const chev=hasSubs ? `<i class="fa-solid ${open?'fa-chevron-up':'fa-chevron-down'} chev" aria-hidden="true"></i>` : '';
-    return `<div class="filter-wrap ${open?'open':''}"><button class="filter ${active?'active':''}" data-cat="${c}"><span>${c}</span>${chev}</button>${subs}</div>`;
+    return `<div class="filter-wrap ${open?'open':''}"><button class="filter ${active?'active':''} ${pillClass}" data-cat="${c}"><span>${c}</span>${chev}</button>${subs}</div>`;
   }).join('');
+  if(lastPillChange) setTimeout(()=>{ lastPillChange=null; }, 260);
 }
 function setCategory(cat){
+  const wasActive=cat==='All' ? isAllSelected() : selectedCats.has(cat);
   if(cat === 'All'){
     selectedCats = new Set(['All']);
     selectedSubs = {};
@@ -386,6 +405,8 @@ function setCategory(cat){
       selectedSubs = {};
     }
   }
+  const nowActive=cat==='All' ? isAllSelected() : selectedCats.has(cat);
+  lastPillChange={type:'cat',cat,active:nowActive && !wasActive};
   animateCommandRefresh();
   renderFilters();
 }
@@ -393,8 +414,10 @@ function setSubcategory(cat, sub){
   selectedCats.delete('All');
   selectedCats.add(cat);
   const set=subSet(cat);
-  if(set.has(sub)) set.delete(sub); else set.add(sub);
+  const wasActive=set.has(sub);
+  if(wasActive) set.delete(sub); else set.add(sub);
   if(set.size === 0) delete selectedSubs[cat];
+  lastPillChange={type:'sub',cat,sub,active:!wasActive};
   animateCommandRefresh();
   renderFilters();
 }
@@ -426,20 +449,18 @@ filters.addEventListener('click',e=>{
 });
 function openFilters(){
   commandShell.classList.remove('filter-closing');
-  commandShell.classList.add('filter-open');
+  commandShell.classList.add('filter-open','filter-opening');
   filterToggle.classList.add('active');
   filterToggle.setAttribute('aria-expanded','true');
-  filterSidebar.style.animation = 'none';
-  void filterSidebar.offsetWidth;
-  filterSidebar.style.animation = '';
+  window.setTimeout(()=>commandShell.classList.remove('filter-opening'), 460);
 }
 function closeFilters(){
   if(!commandShell.classList.contains('filter-open')) return;
-  commandShell.classList.remove('filter-open');
+  commandShell.classList.remove('filter-open','filter-opening');
   commandShell.classList.add('filter-closing');
   filterToggle.classList.remove('active');
   filterToggle.setAttribute('aria-expanded','false');
-  window.setTimeout(()=>commandShell.classList.remove('filter-closing'), 290);
+  window.setTimeout(()=>commandShell.classList.remove('filter-closing'), 320);
 }
 filterToggle.addEventListener('click',()=>{
   if(commandShell.classList.contains('filter-open')) closeFilters();
