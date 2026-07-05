@@ -344,6 +344,15 @@
     .command-shell.filter-open:not(.filter-opening) .filter-sort,
     .command-shell.filter-open:not(.filter-opening) .filter-sort-title,
     .command-shell.filter-open:not(.filter-opening) .sort-option{animation:none!important}
+
+    /* Bug fixes: keep every category in the sidebar entrance animation and prevent sparse command results from stretching cards */
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(9){animation-delay:.27s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(10){animation-delay:.30s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(11){animation-delay:.33s}
+    .command-shell.filter-open.filter-opening .filter-sidebar .filter-wrap:nth-child(12){animation-delay:.36s}
+    .cmd-grid{align-content:start!important;align-items:start!important;grid-auto-rows:auto!important}
+    .cmd-grid .command{height:auto!important;align-self:start!important}
+
     @media(min-width:981px){
       .commands-panel{min-height:666px!important}
       .cmd-grid{min-height:560px!important}
