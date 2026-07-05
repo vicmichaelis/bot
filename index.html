@@ -565,10 +565,26 @@
     .secret-back:hover{transform:translateY(-1px);background:linear-gradient(180deg,#ffd9a1,#f6b8b8);color:#321018}
     .secret-player-wrap{position:relative;overflow:hidden;border-radius:24px;background:#0b0509;aspect-ratio:16/9;border:1px solid rgba(255,221,200,.16)}
     #secretPlayer{position:absolute;inset:0;width:100%;height:100%}
-    .secret-controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .secret-control-panel{margin-top:14px;display:grid;gap:12px;transition:opacity .22s ease,transform .28s cubic-bezier(.18,.9,.2,1)}
+    .secret-progress-row{display:flex;align-items:center;gap:10px;color:#ffd8c0;font-weight:900;font-size:.78rem}
+    .secret-time{min-width:44px;text-align:center;font-variant-numeric:tabular-nums;color:#ffe0cb}
+    .secret-range{width:100%;height:12px;appearance:none;-webkit-appearance:none;border-radius:999px;background:linear-gradient(90deg,#f6b8b8 var(--secret-fill,0%),rgba(255,235,218,.10) var(--secret-fill,0%));border:1px solid rgba(255,221,200,.18);outline:0;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+    .secret-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#ffd9a1,#f6b8b8);border:0;box-shadow:0 8px 22px rgba(246,184,184,.34);cursor:pointer}
+    .secret-range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#ffd9a1,#f6b8b8);border:0;box-shadow:0 8px 22px rgba(246,184,184,.34);cursor:pointer}
+    .secret-controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
     .secret-control{width:48px;height:48px;border:1px solid var(--line);border-radius:16px;background:rgba(255,235,218,.075);color:#ffe0cb;display:grid;place-items:center;cursor:pointer;font-weight:950;transition:transform .18s ease,background .18s ease,color .18s ease}
     .secret-control:hover{transform:translateY(-1px);background:linear-gradient(180deg,#ffd9a1,#f6b8b8);color:#321018}
     .secret-control.play{width:58px;height:58px;border-radius:20px;background:linear-gradient(180deg,#ffd9a1,#f6b8b8 62%,#dd7f5e);color:#321018;box-shadow:0 18px 46px rgba(246,184,184,.22)}
+    .secret-volume{display:flex;align-items:center;gap:9px;min-width:190px;padding:0 10px;border:1px solid var(--line);border-radius:16px;background:rgba(255,235,218,.055);height:48px;color:#ffe0cb}
+    .secret-volume .secret-range{height:9px}
+    .secret-stage.secret-fullscreen{align-items:stretch;justify-content:stretch;background:#0b0509}
+    .secret-stage.secret-fullscreen .secret-video-shell{width:100%;height:100%;border-radius:0;border:0;padding:0;background:#0b0509;box-shadow:none;display:flex;flex-direction:column}
+    .secret-stage.secret-fullscreen .secret-video-top{position:absolute;top:16px;left:16px;right:16px;z-index:4;opacity:.38;transition:opacity .2s ease}
+    .secret-stage.secret-fullscreen .secret-video-top:hover{opacity:1}
+    .secret-stage.secret-fullscreen .secret-player-wrap{flex:1;aspect-ratio:auto;border-radius:0;border:0}
+    .secret-stage.secret-fullscreen .secret-control-panel{position:fixed;left:24px;right:24px;bottom:0;z-index:5;margin:0;padding:14px 16px 18px;border:1px solid rgba(255,221,200,.18);border-bottom:0;border-radius:24px 24px 0 0;background:rgba(19,9,17,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:.34;transform:translateY(72%);box-shadow:0 -18px 60px rgba(0,0,0,.3)}
+    .secret-stage.secret-fullscreen .secret-control-panel:hover,
+    .secret-stage.secret-fullscreen .secret-control-panel:focus-within{opacity:1;transform:translateY(0)}
     @keyframes secretFadeIn{from{opacity:0}to{opacity:1}}
     @keyframes secretCardIn{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
     @keyframes secretIconPulse{0%,100%{transform:scale(1);filter:saturate(1)}50%{transform:scale(1.06);filter:saturate(1.18)}}
@@ -594,7 +610,7 @@
   </main><footer><div class="wrap foot"><div><span class="footer-name">Vic Michaelis</span> <span class="copyright">© 2026</span></div><div class="foot-links"><a href="#features">Features</a><a href="#commands">Commands</a><a href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands">Invite</a></div></div></footer>
 
   <div class="secret-loading" id="secretLoading" aria-hidden="true"><div class="secret-loading-card"><div class="secret-loading-icon"><i class="fa-solid fa-star"></i></div><h2 class="secret-loading-title">Loading...</h2><p class="secret-loading-copy">Preparing something very important.</p><div class="secret-loading-bar"><div class="secret-loading-fill"></div></div></div></div>
-  <div class="secret-stage" id="secretStage" aria-hidden="true"><div class="secret-video-shell"><div class="secret-video-top"><div class="secret-video-title"><i class="fa-brands fa-youtube"></i><span>Very Important Player</span></div><button class="secret-back" id="secretBack" type="button"><i class="fa-solid fa-arrow-left"></i>Back</button></div><div class="secret-player-wrap"><div id="secretPlayer"></div></div><div class="secret-controls"><button class="secret-control" id="secretBackFive" type="button" aria-label="Back 5 seconds"><i class="fa-solid fa-backward"></i></button><button class="secret-control play" id="secretPlayPause" type="button" aria-label="Pause or play"><i class="fa-solid fa-pause"></i></button><button class="secret-control" id="secretForwardFive" type="button" aria-label="Forward 5 seconds"><i class="fa-solid fa-forward"></i></button></div></div></div>
+  <div class="secret-stage" id="secretStage" aria-hidden="true"><div class="secret-video-shell" id="secretVideoShell"><div class="secret-video-top"><div class="secret-video-title"><i class="fa-brands fa-youtube"></i><span>Very Important Player</span></div><button class="secret-back" id="secretBack" type="button"><i class="fa-solid fa-arrow-left"></i>Back</button></div><div class="secret-player-wrap"><div id="secretPlayer"></div></div><div class="secret-control-panel" id="secretControlPanel"><div class="secret-progress-row"><span class="secret-time" id="secretCurrentTime">0:00</span><input class="secret-range" id="secretProgress" type="range" min="0" max="1000" value="0" aria-label="Video progress"><span class="secret-time" id="secretDuration">0:00</span></div><div class="secret-controls"><button class="secret-control" id="secretBackFive" type="button" aria-label="Back 5 seconds"><i class="fa-solid fa-backward"></i></button><button class="secret-control play" id="secretPlayPause" type="button" aria-label="Pause or play"><i class="fa-solid fa-pause"></i></button><button class="secret-control" id="secretForwardFive" type="button" aria-label="Forward 5 seconds"><i class="fa-solid fa-forward"></i></button><label class="secret-volume" aria-label="Volume"><i class="fa-solid fa-volume-high"></i><input class="secret-range" id="secretVolume" type="range" min="0" max="100" value="100" aria-label="Volume slider"></label><button class="secret-control" id="secretFullscreen" type="button" aria-label="Fullscreen"><i class="fa-solid fa-expand"></i></button></div></div></div></div>
 <script>
 const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands";
 document.querySelectorAll('a[href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"]').forEach(a=>a.href=inviteUrl);
@@ -963,11 +979,20 @@ const chips=[
   let apiLoading = false;
   const loading = document.getElementById('secretLoading');
   const stage = document.getElementById('secretStage');
+  const shell = document.getElementById('secretVideoShell');
   const playPause = document.getElementById('secretPlayPause');
   const backFive = document.getElementById('secretBackFive');
   const forwardFive = document.getElementById('secretForwardFive');
   const back = document.getElementById('secretBack');
+  const volume = document.getElementById('secretVolume');
+  const fullscreen = document.getElementById('secretFullscreen');
+  const progressBar = document.getElementById('secretProgress');
+  const currentTimeLabel = document.getElementById('secretCurrentTime');
+  const durationLabel = document.getElementById('secretDuration');
+  let progressTimer = null;
+  let isSeeking = false;
   const icon = () => playPause ? playPause.querySelector('i') : null;
+  const fullscreenIcon = () => fullscreen ? fullscreen.querySelector('i') : null;
 
   function normalizeKey(event){
     if(event.key === 'b' || event.key === 'B') return 'b';
@@ -995,8 +1020,14 @@ const chips=[
       videoId: 'mp6ExR6CtHY',
       playerVars: { autoplay: 1, controls: 0, disablekb: 1, rel: 0, modestbranding: 1, playsinline: 1 },
       events: {
-        onReady: function(event){ event.target.unMute(); event.target.setVolume(100); event.target.playVideo(); },
-        onStateChange: updatePlayIcon
+        onReady: function(event){
+          event.target.unMute();
+          event.target.setVolume(100);
+          if(volume){ volume.value = 100; paintRange(volume, 100); }
+          event.target.playVideo();
+          startProgressTimer();
+        },
+        onStateChange: function(){ updatePlayIcon(); updateProgress(); }
       }
     });
   }
@@ -1005,6 +1036,47 @@ const chips=[
     if(!player || !icon()) return;
     const state = player.getPlayerState ? player.getPlayerState() : null;
     icon().className = state === YT.PlayerState.PLAYING ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+  }
+
+  function formatTime(seconds){
+    seconds = Math.max(0, Math.floor(Number(seconds) || 0));
+    const minutes = Math.floor(seconds / 60);
+    const remaining = seconds % 60;
+    return minutes + ':' + String(remaining).padStart(2, '0');
+  }
+
+  function paintRange(range, percent){
+    if(range) range.style.setProperty('--secret-fill', Math.max(0, Math.min(100, percent)) + '%');
+  }
+
+  function updateProgress(){
+    if(!player || !player.getCurrentTime || !player.getDuration) return;
+    const duration = player.getDuration() || 0;
+    const current = player.getCurrentTime() || 0;
+    if(currentTimeLabel) currentTimeLabel.textContent = formatTime(current);
+    if(durationLabel) durationLabel.textContent = formatTime(duration);
+    if(progressBar && !isSeeking){
+      const value = duration ? (current / duration) * 1000 : 0;
+      progressBar.value = value;
+      paintRange(progressBar, value / 10);
+    }
+  }
+
+  function startProgressTimer(){
+    stopProgressTimer();
+    updateProgress();
+    progressTimer = setInterval(updateProgress, 350);
+  }
+
+  function stopProgressTimer(){
+    if(progressTimer) clearInterval(progressTimer);
+    progressTimer = null;
+  }
+
+  function updateFullscreenState(){
+    const full = document.fullscreenElement === stage || document.fullscreenElement === shell || document.fullscreenElement === document.documentElement;
+    stage.classList.toggle('secret-fullscreen', !!full);
+    if(fullscreenIcon()) fullscreenIcon().className = full ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
   }
 
   function openSecret(){
@@ -1018,11 +1090,15 @@ const chips=[
       stage.classList.add('active');
       stage.setAttribute('aria-hidden','false');
       loadYouTubeAPI();
+      startProgressTimer();
     }, 2400);
   }
 
   function closeSecret(){
     if(player && player.stopVideo) player.stopVideo();
+    stopProgressTimer();
+    if(document.fullscreenElement) document.exitFullscreen().catch(function(){});
+    stage.classList.remove('secret-fullscreen');
     stage.classList.remove('active');
     stage.setAttribute('aria-hidden','true');
     loading.classList.remove('active');
@@ -1053,8 +1129,42 @@ const chips=[
     else player.playVideo();
     setTimeout(updatePlayIcon, 80);
   });
-  backFive.addEventListener('click', function(){ if(player && player.seekTo) player.seekTo(Math.max(0, player.getCurrentTime() - 5), true); });
-  forwardFive.addEventListener('click', function(){ if(player && player.seekTo) player.seekTo(player.getCurrentTime() + 5, true); });
+  backFive.addEventListener('click', function(){ if(player && player.seekTo) { player.seekTo(Math.max(0, player.getCurrentTime() - 5), true); setTimeout(updateProgress, 80); } });
+  forwardFive.addEventListener('click', function(){ if(player && player.seekTo) { player.seekTo(player.getCurrentTime() + 5, true); setTimeout(updateProgress, 80); } });
+  if(volume){
+    paintRange(volume, Number(volume.value));
+    volume.addEventListener('input', function(){
+      paintRange(volume, Number(volume.value));
+      if(player && player.setVolume){
+        player.setVolume(Number(volume.value));
+        if(Number(volume.value) > 0 && player.unMute) player.unMute();
+      }
+    });
+  }
+  if(progressBar){
+    paintRange(progressBar, 0);
+    progressBar.addEventListener('pointerdown', function(){ isSeeking = true; });
+    progressBar.addEventListener('input', function(){
+      paintRange(progressBar, Number(progressBar.value) / 10);
+      if(player && player.getDuration && currentTimeLabel){
+        currentTimeLabel.textContent = formatTime((player.getDuration() || 0) * (Number(progressBar.value) / 1000));
+      }
+    });
+    progressBar.addEventListener('change', function(){
+      if(player && player.seekTo && player.getDuration){
+        player.seekTo((player.getDuration() || 0) * (Number(progressBar.value) / 1000), true);
+      }
+      isSeeking = false;
+      setTimeout(updateProgress, 80);
+    });
+    progressBar.addEventListener('pointerup', function(){ isSeeking = false; });
+  }
+  fullscreen.addEventListener('click', function(){
+    if(document.fullscreenElement){ document.exitFullscreen().catch(function(){}); return; }
+    const target = stage.requestFullscreen ? stage : shell;
+    if(target && target.requestFullscreen) target.requestFullscreen().catch(function(){});
+  });
+  document.addEventListener('fullscreenchange', updateFullscreenState);
   back.addEventListener('click', closeSecret);
 })();
 </script>
