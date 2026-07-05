@@ -692,23 +692,72 @@
     }
 
 
+
+    /* Final requested fixes: feature paging, premium luxury, fixed mobile waves, footer credit, and PC pet grid */
+    @media(min-width:981px){
+      .feature-card.tall .care-list:not(.pet-care-pager){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:stretch!important}
+      .feature-card.tall .care-item{width:auto!important;min-width:0!important}
+    }
+    .feature-premium{
+      isolation:isolate;
+      border-color:rgba(255,220,129,.42)!important;
+      background:
+        radial-gradient(circle at 82% 8%,rgba(255,240,184,.32),transparent 34%),
+        radial-gradient(circle at 10% 0%,rgba(246,184,184,.18),transparent 38%),
+        linear-gradient(135deg,rgba(255,235,218,.12),rgba(255,207,119,.105) 50%,rgba(19,9,17,.55))!important;
+      box-shadow:0 24px 76px rgba(201,135,36,.18),inset 0 1px 0 rgba(255,255,255,.10)!important;
+    }
+    .feature-premium::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 35%,rgba(255,255,255,.13) 47%,transparent 60%);transform:translateX(-78%);pointer-events:none;animation:premiumFeatureSheen 6.4s ease-in-out infinite;z-index:0}
+    .feature-premium::after{content:"";position:absolute;right:18px;top:18px;width:58px;height:58px;border-radius:20px;background:radial-gradient(circle at 35% 25%,#fff8d2,transparent 28%),linear-gradient(135deg,#fff0b8,#f7c75a 52%,#c98724);opacity:.22;filter:blur(.2px);z-index:0}
+    .feature-premium>*{position:relative;z-index:1}
+    .feature-premium h3{color:#fff3c4;text-shadow:0 0 30px rgba(247,199,90,.25)}
+    .feature-premium .mini-cmds span{color:#321018;background:linear-gradient(135deg,#fff0b8,#f7c75a 52%,#c98724);border-color:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 8px 22px rgba(247,199,90,.12)}
+    @keyframes premiumFeatureSheen{0%,64%{transform:translateX(-78%)}100%{transform:translateX(78%)}}
+    .developed-by{margin-top:6px;color:var(--muted);font-size:.9rem;font-weight:800}.developed-by a{color:#ffd8c0;font-weight:950;text-decoration:none}.developed-by a:hover{text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:760px){
+      .liquid{position:fixed!important;inset:0!important;width:100vw!important;height:100lvh!important;min-height:100lvh!important;max-height:100lvh!important;overflow:hidden!important;transform:translateZ(0)!important;contain:paint!important}
+      @supports not (height:100lvh){.liquid{height:100vh!important;min-height:100vh!important;max-height:100vh!important}}
+      .liquid .wave{bottom:-360px!important}.liquid .wave:nth-child(2){bottom:-282px!important}.liquid .wave:nth-child(3){bottom:-190px!important}
+      #features .features-grid{--feature-page:0;display:flex!important;grid-template-columns:none!important;gap:0!important;overflow:hidden!important;align-items:stretch!important;touch-action:pan-y;scrollbar-width:none}
+      #features .features-grid::-webkit-scrollbar{display:none}
+      #features .side-stack{display:contents!important}
+      #features .features-grid>.feature-card,
+      #features .features-grid>.side-stack>.feature-card{flex:0 0 100%!important;width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;transform:translateX(calc(var(--feature-page,0) * -100%));transition:transform .42s cubic-bezier(.18,.9,.2,1);margin:0!important}
+      #features .feature-card{border-radius:26px!important}
+      .features-pager{display:flex;justify-content:center;gap:8px;margin:16px 0 0}
+      .features-page-dot{width:9px;height:9px;border:0;border-radius:999px;background:rgba(255,225,204,.30);cursor:pointer;transition:.18s;padding:0}
+      .features-page-dot.active{background:#ffd3aa;transform:scale(1.2)}
+      .feature-card.tall.mobile-pet-carousel .care-list.pet-care-pager{max-height:260px!important}
+      .cta-card{max-width:calc(100vw - 48px)!important;margin-left:auto!important;margin-right:auto!important;padding:28px 150px 28px 22px!important;min-height:300px!important}
+      .cta-image{width:155px!important;height:100%!important;right:-6px!important;object-fit:contain!important;object-position:right center!important}
+      .cta h3{font-size:clamp(1.9rem,9vw,3.25rem)!important;max-width:11ch!important;white-space:normal!important}
+      .cta p{max-width:100%!important;font-size:.96rem!important;line-height:1.48!important;margin-bottom:16px!important}
+      .cta .invite{padding:11px 14px!important;font-size:.9rem!important}
+    }
+    @media(max-width:430px){
+      .cta-card{max-width:calc(100vw - 34px)!important;padding:26px 122px 26px 18px!important;min-height:292px!important}
+      .cta-image{width:132px!important;right:-12px!important}
+      .cta h3{font-size:clamp(1.65rem,8.8vw,2.7rem)!important}
+      .cta p{font-size:.9rem!important}.cta .invite{font-size:.83rem!important;padding:10px 11px!important}
+    }
+
   </style>
 </head>
 <body>
   <div class="liquid"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
-  <header class="topbar"><div class="top-inner"><a href="#" class="brand"><img class="bot-icon" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&amp;is=6a48b5de&amp;hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&amp;" alt="Vic Michaelis bot icon"><span class="brand-text"><strong>Vic Michaelis</strong><span>A Very Important Discord Bot</span></span></a><nav class="nav"><a href="#home"><i class="fa-solid fa-house"></i>Home</a><a href="#features"><i class="fa-solid fa-star"></i>Features</a><a href="#commands"><i class="fa-solid fa-terminal"></i>Commands</a></nav><div class="top-actions"><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite</a></div></div></header>
+  <header class="topbar"><div class="top-inner"><a href="#" class="brand"><img class="bot-icon" src="vicmichaelisboticon.png" alt="Vic Michaelis bot icon"><span class="brand-text"><strong>Vic Michaelis</strong><span>A Very Important Discord Bot</span></span></a><nav class="nav"><a href="#home"><i class="fa-solid fa-house"></i>Home</a><a href="#features"><i class="fa-solid fa-star"></i>Features</a><a href="#commands"><i class="fa-solid fa-terminal"></i>Commands</a></nav><div class="top-actions"><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i>Invite</a></div></div></header>
   <main>
-    <section id="home" class="hero"><div class="hero-grid"><div><span class="eyebrow"><i class="fa-solid fa-star"></i> an all-in-one bot, just for you</span><h1>Make your server <span class="mark">very important.</span></h1><p>Vic Michaelis brings pet care, macaron currency, pet rooms, gacha, games, mail, quests, and more into your server.</p><div class="hero-actions"><a class="btn btn-main" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a><a class="btn btn-ghost" href="#commands"><i class="fa-solid fa-magnifying-glass"></i>Browse commands</a></div></div>
+    <section id="home" class="hero"><div class="hero-grid"><div><span class="eyebrow"><i class="fa-solid fa-star"></i> an all-in-one bot, just for you</span><h1>Make your server <span class="mark">very important.</span></h1><p>Vic Michaelis brings pet care, macaron currency, pet rooms, gacha, games, mail, quests, and more into your server.</p><div class="hero-actions"><a class="btn btn-main" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i>Invite Vic</a><a class="btn btn-ghost" href="#commands"><i class="fa-solid fa-magnifying-glass"></i>Browse commands</a></div></div>
       <div class="showcase"><article class="preview-card" id="previewCard"><div class="slide-window"><div class="slide-track" id="slideTrack">
-        <div class="slide"><div class="slide-shell"><div class="preview-label">Earn macarons</div><h2 class="preview-title">Host a Very Important Interview</h2><p class="preview-copy">Host a Very Important People-style interview and earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/host</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&amp;is=6a48b5de&amp;hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&amp;" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 6:42 PM</span></div><div class="embed"><div class="embed-title">A Very Important Interview</div><div class="embed-desc"><span style="color:#F6B8B8">@you</span> hosts Vic Michaelis on a very important interview. The lights turn on, you complete the interview, and you recieve macarons.</div><div class="fields"><div class="field"><strong>reward</strong>+450 macarons</div></div></div></div></div></div></div></div>
-        <div class="slide"><div class="slide-shell"><div class="preview-label">Feed Your Pet</div><h2 class="preview-title">Immersive Pet Feeding</h2><p class="preview-copy">Feed your pet gacha items, or a cooked meal giving them hunger, happiness and energy.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/feedpet</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&amp;is=6a48b5de&amp;hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&amp;" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 8:17 PM</span></div><div class="embed"><div class="embed-title">You fed Vic Michaelis!</div><div class="embed-desc"><em>Vic settles in and eats strawberry shortcake. they seem especially pleased.</em><br>hunger gained: +28 · happiness gained: +8 · energy gained: +3</div><div class="fields"><div class="field"><strong>current stats</strong>hunger 86/100<br>happiness 42/50</div><div class="field"><strong>bonus</strong>recipe mastery +3%</div></div></div></div></div></div></div></div>
-        <div class="slide"><div class="slide-shell"><div class="preview-label">Daily Rewards</div><h2 class="preview-title">Claim Your Daily Macarons</h2><p class="preview-copy">Give your members a quick and easy daily activity to earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/claimdaily</code></div><div class="discord"><div class="msg"><img class="avatar" src="https://cdn.discordapp.com/attachments/896477418079002764/1522866415672098826/fr7kxnv.png?ex=6a4a075e&amp;is=6a48b5de&amp;hm=03f2b4e541aaeb3c71be82143a41527dc3b6dc693d25de2c9d1f56af47501225&amp;" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 10:03 PM</span></div><div class="embed"><div class="embed-title">your daily has been claimed !</div><div class="fields"><div class="field"><strong>reward</strong>250 macarons</div><div class="field"><strong>new balance</strong>12,950 macarons</div></div><div class="embed-btns"><button class="embed-btn">Remind Me</button></div></div></div></div></div></div></div>
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Earn macarons</div><h2 class="preview-title">Host a Very Important Interview</h2><p class="preview-copy">Host a Very Important People-style interview and earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/host</code></div><div class="discord"><div class="msg"><img class="avatar" src="vicmichaelisboticon.png" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 6:42 PM</span></div><div class="embed"><div class="embed-title">A Very Important Interview</div><div class="embed-desc"><span style="color:#F6B8B8">@you</span> hosts Vic Michaelis on a very important interview. The lights turn on, you complete the interview, and you recieve macarons.</div><div class="fields"><div class="field"><strong>reward</strong>+450 macarons</div></div></div></div></div></div></div></div>
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Feed Your Pet</div><h2 class="preview-title">Immersive Pet Feeding</h2><p class="preview-copy">Feed your pet gacha items, or a cooked meal giving them hunger, happiness and energy.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/feedpet</code></div><div class="discord"><div class="msg"><img class="avatar" src="vicmichaelisboticon.png" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 8:17 PM</span></div><div class="embed"><div class="embed-title">You fed Vic Michaelis!</div><div class="embed-desc"><em>Vic settles in and eats strawberry shortcake. they seem especially pleased.</em><br>hunger gained: +28 · happiness gained: +8 · energy gained: +3</div><div class="fields"><div class="field"><strong>current stats</strong>hunger 86/100<br>happiness 42/50</div><div class="field"><strong>bonus</strong>recipe mastery +3%</div></div></div></div></div></div></div></div>
+        <div class="slide"><div class="slide-shell"><div class="preview-label">Daily Rewards</div><h2 class="preview-title">Claim Your Daily Macarons</h2><p class="preview-copy">Give your members a quick and easy daily activity to earn macarons.</p><div class="command-tip"><i class="fa-solid fa-terminal"></i> Use <code>/claimdaily</code></div><div class="discord"><div class="msg"><img class="avatar" src="vicmichaelisboticon.png" alt="Vic icon"><div class="msg-body"><div class="msg-top"><strong>Vic Michaelis</strong><span class="bot-tag">BOT</span><span class="time">Today at 10:03 PM</span></div><div class="embed"><div class="embed-title">your daily has been claimed !</div><div class="fields"><div class="field"><strong>reward</strong>250 macarons</div><div class="field"><strong>new balance</strong>12,950 macarons</div></div><div class="embed-btns"><button class="embed-btn">Remind Me</button></div></div></div></div></div></div></div>
       </div></div><div class="dots" id="dots"><button class="dot active" data-i="0"></button><button class="dot" data-i="1"></button><button class="dot" data-i="2"></button></div></article></div></div></section>
     <section class="wrap section"><div class="stats"><div class="marquee" id="marquee"></div></div></section>
-    <section id="features" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-layer-group"></i>Layers Upon Layers of Commands</span><h2 class="section-title">Everything you need, in one bot.</h2><p class="section-copy">The bot has features for pets, rewards, collecting, rooms, and social systems, so users always have something to do.</p></div><div class="features-grid"><article class="feature-card tall"><h3>Immersive Pet Systems</h3><p>Select and customize your very own pet. Pets have hunger, happiness, energy, trust, wants, letters, rooms, and partners.</p><div class="care-list"><div class="care-item"><strong>/pet cuddle</strong><span>Cuddle your pet for happiness</span></div><div class="care-item"><strong>/pet walk</strong><span>Take your pet on a short walk.</span></div><div class="care-item"><strong>/pet fetch</strong><span>Play fetch with your pet</span></div><div class="care-item"><strong>/pet praise</strong><span>Praise your pet to boost stats</span></div><div class="care-item"><strong>/pet draw</strong><span>Draw with your pet for happiness and XP.</span></div><div class="care-item"><strong>/pet trivia</strong><span>Answer trivia for boosts and macarons</span></div><div class="care-item"><strong>/pet job</strong><span>Send your pet to earn macarons.</span></div><div class="care-item"><strong>/pet scavenge</strong><span>Gather materials for furniture crafting.</span></div><div class="care-item"><strong>/feedpet</strong><span>Feed meals, snacks, and cooked recipes.</span></div><div class="care-item"><strong>/pettrust</strong><span>Check your long-term trust bar.</span></div><div class="care-item"><strong>/pet nap</strong><span>Restore energy with a cozy rest.</span></div><div class="care-item"><strong>/pet sleep</strong><span>Let your pet fully recharge.</span></div><div class="care-item"><strong>/pet trick</strong><span>Practice a small trick together.</span></div><div class="care-item"><strong>/pet treat</strong><span>Feed your pet a quick treat.</span></div></div></article><div class="side-stack"><article class="feature-card"><h3>Macaron Economy</h3><p>Work, claim daily rewards, collect drops, trace constellations, listen to music, and exchange currency into upgrade points.</p><div class="mini-cmds"><span>/balance</span><span>/work</span><span>/claimdaily</span><span>/currencyexchange</span></div></article><article class="feature-card"><h3>Gacha Systems</h3><p>Roll once, roll ten times, discover items, inspect inventory, sell, gift, trade, and build a collection over time.</p><div class="mini-cmds"><span>/gacha</span><span>/gachaten</span><span>/listall</span><span>/inventory</span></div></article><article class="feature-card"><h3>Vic Michaelis Premium</h3><p>Premium adds smoother progression: bonus macarons, extra pet XP, more scavenge charges, quest refreshes, auto-cooked meals, and discounted pet sitting.</p><div class="mini-cmds"><span>+10% macarons</span><span>+50% pet XP</span><span>5 scavenges</span><span>quest refreshes</span></div></article></div></div></section>
+    <section id="features" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-layer-group"></i>Layers Upon Layers of Commands</span><h2 class="section-title">Everything you need, in one bot.</h2><p class="section-copy">The bot has features for pets, rewards, collecting, rooms, and social systems, so users always have something to do.</p></div><div class="features-grid"><article class="feature-card tall"><h3>Immersive Pet Systems</h3><p>Select and customize your very own pet. Pets have hunger, happiness, energy, trust, wants, letters, rooms, and partners.</p><div class="care-list"><div class="care-item"><strong>/pet cuddle</strong><span>Cuddle your pet for happiness</span></div><div class="care-item"><strong>/pet walk</strong><span>Take your pet on a short walk.</span></div><div class="care-item"><strong>/pet fetch</strong><span>Play fetch with your pet</span></div><div class="care-item"><strong>/pet praise</strong><span>Praise your pet to boost stats</span></div><div class="care-item"><strong>/pet draw</strong><span>Draw with your pet for happiness and XP.</span></div><div class="care-item"><strong>/pet trivia</strong><span>Answer trivia for boosts and macarons</span></div><div class="care-item"><strong>/pet job</strong><span>Send your pet to earn macarons.</span></div><div class="care-item"><strong>/pet scavenge</strong><span>Gather materials for furniture crafting.</span></div><div class="care-item"><strong>/feedpet</strong><span>Feed meals, snacks, and cooked recipes.</span></div><div class="care-item"><strong>/pettrust</strong><span>Check your long-term trust bar.</span></div><div class="care-item"><strong>/pet nap</strong><span>Restore energy with a cozy rest.</span></div><div class="care-item"><strong>/pet sleep</strong><span>Let your pet fully recharge.</span></div><div class="care-item"><strong>/pet trick</strong><span>Practice a small trick together.</span></div><div class="care-item"><strong>/pet treat</strong><span>Feed your pet a quick treat.</span></div></div></article><div class="side-stack"><article class="feature-card"><h3>Macaron Economy</h3><p>Work, claim daily rewards, collect drops, trace constellations, listen to music, and exchange currency into upgrade points.</p><div class="mini-cmds"><span>/balance</span><span>/work</span><span>/claimdaily</span><span>/currencyexchange</span></div></article><article class="feature-card"><h3>Gacha Systems</h3><p>Roll once, roll ten times, discover items, inspect inventory, sell, gift, trade, and build a collection over time.</p><div class="mini-cmds"><span>/gacha</span><span>/gachaten</span><span>/listall</span><span>/inventory</span></div></article><article class="feature-card feature-premium"><h3>Vic Michaelis Premium</h3><p>Premium adds smoother progression: bonus macarons, extra pet XP, more scavenge charges, quest refreshes, auto-cooked meals, and discounted pet sitting.</p><div class="mini-cmds"><span>+10% macarons</span><span>+50% pet XP</span><span>5 scavenges</span><span>quest refreshes</span></div></article></div></div></section>
     <section id="commands" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-terminal"></i>Command reference</span><h2 class="section-title">Search all <span class="command-count" id="slashCommandCount">0</span> slash commands.</h2><p class="section-copy">All commands are available upon invite.</p></div><div class="command-shell" id="commandShell"><div class="commands-panel" id="commandsPanel"><div class="search-tools"><div class="search-row"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Search commands, categories, or descriptions"></div><button class="filter-open-btn" id="filterToggle" type="button" aria-expanded="false" aria-label="Open command filters"><i class="fa-solid fa-filter"></i></button></div><div class="command-layout"><div class="command-main"><div class="cmd-grid" id="commandGrid"></div></div></div></div><aside class="filter-sidebar" id="filterSidebar" aria-label="Command filters"><div class="filter-side-head"><span><i class="fa-solid fa-sliders"></i> Categories</span><button class="filter-close" id="filterClose" type="button" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button></div><div class="filters" id="filters"></div><div class="filter-sort" aria-label="Command sorting"><div class="filter-sort-title"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</div><div class="sort-options" id="sortOptions"><button class="sort-option active" type="button" data-sort="az">Alphabetical (A to Z)</button><button class="sort-option" type="button" data-sort="za">Alphabetical (Z to A)</button><button class="sort-option" type="button" data-sort="grouped">Grouped (Category)</button></div></div></aside></div></section>
-    <section id="invite" class="wrap cta"><div class="cta-card"><h3>Invite Vic today for free.</h3><p>Invite Vic Michaelis and upgrade your Discord server with <span id="ctaCommandCount">70+</span> registered commands ready to use at your convenience.</p><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a><img class="cta-image" src="vicmichaelis.png" alt="Vic Michaelis" loading="lazy"></div></section>
-  </main><footer><div class="wrap foot"><div><span class="footer-name">Vic Michaelis</span> <span class="copyright">© 2026</span></div><div class="foot-links"><a href="#features">Features</a><a href="#commands">Commands</a><a href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands">Invite</a></div></div></footer>
+    <section id="invite" class="wrap cta"><div class="cta-card"><h3>Invite Vic today for free.</h3><p>Invite Vic Michaelis and upgrade your Discord server with <span id="ctaCommandCount">70+</span> registered commands ready to use at your convenience.</p><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i>Invite Vic</a><img class="cta-image" src="vicmichaelis.png" alt="Vic Michaelis" loading="lazy"></div></section>
+  </main><footer><div class="wrap foot"><div><span class="footer-name">Vic Michaelis</span> <span class="copyright">© 2026</span><div class="developed-by">Developed by <a href="https://discord.gg/yEtNeWSm8J" target="_blank" rel="noopener noreferrer">@lemonexus</a></div></div><div class="foot-links"><a href="#features">Features</a><a href="#commands">Commands</a><a href="https://discord.gg/yEtNeWSm8J" target="_blank" rel="noopener noreferrer">Support</a></div></div></footer>
 
   <div class="secret-loading" id="secretLoading" aria-hidden="true"><div class="secret-loading-card"><div class="secret-loading-icon"><i class="fa-solid fa-star"></i></div><h2 class="secret-loading-title">Loading...</h2><p class="secret-loading-copy">Preparing something very important.</p><div class="secret-loading-bar"><div class="secret-loading-fill"></div></div></div></div>
   <div class="secret-stage" id="secretStage" aria-hidden="true"><div class="secret-video-shell" id="secretVideoShell"><div class="secret-video-top"><div class="secret-video-title"><i class="fa-brands fa-youtube"></i><span>Very Important Player</span></div><button class="secret-back" id="secretBack" type="button"><i class="fa-solid fa-arrow-left"></i>Back</button></div><div class="secret-player-wrap"><div id="secretPlayer"></div></div><div class="secret-control-panel" id="secretControlPanel"><div class="secret-progress-row"><span class="secret-time" id="secretCurrentTime">0:00</span><input class="secret-range" id="secretProgress" type="range" min="0" max="1000" value="0" aria-label="Video progress"><span class="secret-time" id="secretDuration">0:00</span></div><div class="secret-controls"><button class="secret-control" id="secretBackFive" type="button" aria-label="Back 5 seconds"><i class="fa-solid fa-backward"></i></button><button class="secret-control play" id="secretPlayPause" type="button" aria-label="Pause or play"><i class="fa-solid fa-pause"></i></button><button class="secret-control" id="secretForwardFive" type="button" aria-label="Forward 5 seconds"><i class="fa-solid fa-forward"></i></button><label class="secret-volume" aria-label="Volume"><i class="fa-solid fa-volume-high"></i><input class="secret-range" id="secretVolume" type="range" min="0" max="100" value="100" aria-label="Volume slider"></label><button class="secret-control" id="secretFullscreen" type="button" aria-label="Fullscreen"><i class="fa-solid fa-expand"></i></button></div></div></div></div>
@@ -1068,6 +1117,74 @@ const chips=[
   {icon:'fa-solid fa-envelope', name:'/mailbox', cat:'Community'},
   {icon:'fa-solid fa-dice', name:'/slots', cat:'Games'}
 ]; document.getElementById('marquee').innerHTML=chips.concat(chips).map(c=>`<div class="chip"><div class="chip-i"><i class="${c.icon}"></i></div><div><p>${c.name}</p><span>${c.cat}</span></div></div>`).join('');
+
+/* Final requested interactions: robust next-preview click, mobile feature pages, and external tab safety */
+(function(){
+  const previewCard = document.getElementById('previewCard');
+  let previewDown = null;
+  if(previewCard){
+    previewCard.addEventListener('pointerdown', function(event){
+      const next = event.target.closest('.slide.next-slide');
+      if(!next) return;
+      previewDown = {x:event.clientX, y:event.clientY, target:next};
+    }, true);
+    previewCard.addEventListener('pointerup', function(event){
+      if(!previewDown) return;
+      const dx = event.clientX - previewDown.x;
+      const dy = event.clientY - previewDown.y;
+      const stillNext = event.target.closest('.slide.next-slide') || previewDown.target;
+      previewDown = null;
+      if(!stillNext || Math.abs(dx) > 14 || Math.abs(dy) > 14) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slide !== 'undefined') setSlide(slide + 1);
+    }, true);
+  }
+
+  const featuresGrid = document.querySelector('#features .features-grid');
+  const featureCards = featuresGrid ? [featuresGrid.querySelector(':scope > .feature-card'), ...featuresGrid.querySelectorAll(':scope > .side-stack > .feature-card')].filter(Boolean) : [];
+  const mobileFeatures = window.matchMedia('(max-width:760px)');
+  let featurePage = 0;
+  let touchStart = null;
+  if(featuresGrid && featureCards.length === 4 && !document.querySelector('#features .features-pager')){
+    const pager = document.createElement('div');
+    pager.className = 'features-pager';
+    featureCards.forEach((card, index) => {
+      card.dataset.featurePage = String(index);
+      const dot = document.createElement('button');
+      dot.className = 'features-page-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Feature page ${index + 1}`);
+      dot.addEventListener('click', () => setFeaturePage(index));
+      pager.appendChild(dot);
+    });
+    featuresGrid.after(pager);
+    function setFeaturePage(index){
+      featurePage = (index + featureCards.length) % featureCards.length;
+      featuresGrid.style.setProperty('--feature-page', featurePage);
+      [...pager.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === featurePage));
+    }
+    featuresGrid.addEventListener('pointerdown', event => {
+      if(!mobileFeatures.matches) return;
+      touchStart = {x:event.clientX, y:event.clientY};
+    });
+    featuresGrid.addEventListener('pointerup', event => {
+      if(!touchStart || !mobileFeatures.matches) return;
+      const dx = event.clientX - touchStart.x;
+      const dy = event.clientY - touchStart.y;
+      touchStart = null;
+      if(Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) setFeaturePage(featurePage + (dx < 0 ? 1 : -1));
+    });
+    featuresGrid.addEventListener('pointercancel', () => { touchStart = null; });
+    setFeaturePage(0);
+  }
+
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.setAttribute('target','_blank');
+    link.setAttribute('rel','noopener noreferrer');
+  });
+})();
+
 </script>
 
 <script>
@@ -1351,6 +1468,74 @@ const chips=[
   });
   list.addEventListener('pointercancel', () => { touching = false; });
   setPetPage(0);
+})();
+
+
+/* Final requested interactions: robust next-preview click, mobile feature pages, and external tab safety */
+(function(){
+  const previewCard = document.getElementById('previewCard');
+  let previewDown = null;
+  if(previewCard){
+    previewCard.addEventListener('pointerdown', function(event){
+      const next = event.target.closest('.slide.next-slide');
+      if(!next) return;
+      previewDown = {x:event.clientX, y:event.clientY, target:next};
+    }, true);
+    previewCard.addEventListener('pointerup', function(event){
+      if(!previewDown) return;
+      const dx = event.clientX - previewDown.x;
+      const dy = event.clientY - previewDown.y;
+      const stillNext = event.target.closest('.slide.next-slide') || previewDown.target;
+      previewDown = null;
+      if(!stillNext || Math.abs(dx) > 14 || Math.abs(dy) > 14) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slide !== 'undefined') setSlide(slide + 1);
+    }, true);
+  }
+
+  const featuresGrid = document.querySelector('#features .features-grid');
+  const featureCards = featuresGrid ? [featuresGrid.querySelector(':scope > .feature-card'), ...featuresGrid.querySelectorAll(':scope > .side-stack > .feature-card')].filter(Boolean) : [];
+  const mobileFeatures = window.matchMedia('(max-width:760px)');
+  let featurePage = 0;
+  let touchStart = null;
+  if(featuresGrid && featureCards.length === 4 && !document.querySelector('#features .features-pager')){
+    const pager = document.createElement('div');
+    pager.className = 'features-pager';
+    featureCards.forEach((card, index) => {
+      card.dataset.featurePage = String(index);
+      const dot = document.createElement('button');
+      dot.className = 'features-page-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Feature page ${index + 1}`);
+      dot.addEventListener('click', () => setFeaturePage(index));
+      pager.appendChild(dot);
+    });
+    featuresGrid.after(pager);
+    function setFeaturePage(index){
+      featurePage = (index + featureCards.length) % featureCards.length;
+      featuresGrid.style.setProperty('--feature-page', featurePage);
+      [...pager.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === featurePage));
+    }
+    featuresGrid.addEventListener('pointerdown', event => {
+      if(!mobileFeatures.matches) return;
+      touchStart = {x:event.clientX, y:event.clientY};
+    });
+    featuresGrid.addEventListener('pointerup', event => {
+      if(!touchStart || !mobileFeatures.matches) return;
+      const dx = event.clientX - touchStart.x;
+      const dy = event.clientY - touchStart.y;
+      touchStart = null;
+      if(Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) setFeaturePage(featurePage + (dx < 0 ? 1 : -1));
+    });
+    featuresGrid.addEventListener('pointercancel', () => { touchStart = null; });
+    setFeaturePage(0);
+  }
+
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.setAttribute('target','_blank');
+    link.setAttribute('rel','noopener noreferrer');
+  });
 })();
 
 </script>
