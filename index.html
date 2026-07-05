@@ -179,6 +179,81 @@
       .community-copy{padding:30px 20px;}
     }
 
+
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    img,svg,canvas,video{max-width:100%}
+    .liquid{width:100vw;max-width:100vw;left:0;right:0;bottom:0;contain:paint}
+    .wave{left:50%;bottom:-245px;width:max(1040px,156vw);height:380px;border-radius:50% 50% 0 0 / 80% 80% 0 0;transform:translateX(-50%);background:radial-gradient(ellipse at 28% 24%,rgba(246,184,184,.24),transparent 36%),radial-gradient(ellipse at 70% 20%,rgba(255,207,119,.16),transparent 38%),linear-gradient(90deg,rgba(246,184,184,.19),rgba(255,192,138,.18),rgba(233,130,87,.16));filter:blur(.2px);will-change:transform}
+    .wave:nth-child(2){bottom:-220px;width:max(1120px,168vw);height:360px;opacity:.5}
+    .wave:nth-child(3){bottom:-195px;width:max(1180px,176vw);height:340px;opacity:.32}
+    @keyframes wave{50%{transform:translateX(-47%) rotate(1.4deg)}}
+    @media(max-width:980px){
+      *{min-width:0}
+      body{position:relative}
+      .wrap,.hero-grid,.top-inner{max-width:100%}
+      .topbar{overflow:hidden}
+      .top-actions{min-width:max-content}
+      .hero-grid>div{min-width:0}
+      .hero h1,.section-title,.cta h3{overflow-wrap:break-word}
+      .showcase,.preview-card,.slide-window,.slide-track,.slide,.slide-shell,.discord,.msg,.embed{max-width:100%}
+      .preview-card{overflow:hidden;border-radius:30px}
+      .slide-window{overflow:hidden}
+      .slide{width:100%}
+      .discord{min-width:0}
+      .msg-body,.embed,.field,.cmd-name,.cmd-desc,.care-item,.feature-card{min-width:0;overflow-wrap:break-word}
+      .command-shell,.commands-panel,.command-layout,.command-main,.cmd-grid,.filter-sidebar{max-width:100%}
+      .command-shell:not(.filter-open) .filter-sidebar{display:none!important}
+      .search-row input{min-width:0;width:100%}
+      .filter-sidebar{overflow-x:hidden}
+      .cta-card{max-width:100%;overflow:hidden}
+      .marquee{max-width:none}
+      .wave{bottom:-260px;width:max(820px,210vw);height:360px}
+      .wave:nth-child(2){bottom:-238px;width:max(900px,230vw);height:350px}
+      .wave:nth-child(3){bottom:-214px;width:max(960px,250vw);height:340px}
+    }
+    @media(max-width:680px){
+      .brand{gap:9px}
+      .top-actions .invite{gap:7px}
+      .hero h1{font-size:clamp(2.35rem,14.5vw,3.75rem);letter-spacing:-.062em}
+      .mark{white-space:normal}
+      .mark::after{left:0;right:0;min-width:0}
+      .eyebrow{max-width:100%;white-space:normal;line-height:1.25}
+      .section-kicker{max-width:100%;white-space:normal;line-height:1.25;justify-content:center}
+      .slide-window,.slide-track{min-height:500px}
+      .slide-shell{min-height:500px;border-radius:24px;padding:16px}
+      .discord{min-height:330px}
+      .msg{align-items:flex-start}
+      .embed-btns{gap:7px}
+      .embed-btn{flex:1 1 auto;min-width:0}
+      .stats{padding:18px}
+      .chip{min-width:205px;padding:12px 13px}
+      .feature-card{padding:20px;border-radius:24px}
+      .care-item{padding:11px 12px}
+      .commands-panel{padding:14px;border-radius:24px}
+      .cmd-grid{max-height:none;overflow:visible;padding-right:0}
+      .filter-sidebar{border-radius:20px;padding:12px}
+      .cta{padding-bottom:58px}
+      .cta-card{border-radius:28px;padding:34px 22px;min-height:270px}
+      footer{padding:28px 0}
+    }
+    @media(max-width:420px){
+      .top-inner{width:calc(100% - 18px)}
+      .brand-text strong{max-width:39vw}
+      .invite{padding:9px 11px}
+      .hero-grid,.wrap{width:calc(100% - 20px)}
+      .hero h1{font-size:clamp(2.2rem,14vw,3.35rem)}
+      .slide-window,.slide-track{min-height:480px}
+      .slide-shell{min-height:480px}
+      .discord{min-height:315px}
+      .preview-title{font-size:1.25rem}
+      .command-tip{max-width:100%;flex-wrap:wrap}
+      .search-tools{gap:7px}
+      .search-row{padding:10px 11px}
+      .search-row input::placeholder{font-size:.82rem}
+      .filter-open-btn{width:46px;height:46px;flex-basis:46px}
+      .foot-links{width:100%;justify-content:flex-start}
+    }
+
   </style>
 </head>
 <body>
