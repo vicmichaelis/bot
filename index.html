@@ -254,6 +254,29 @@
       .foot-links{width:100%;justify-content:flex-start}
     }
 
+    .wave{bottom:-270px;width:max(1180px,178vw);height:430px;border-radius:48% 52% 0 0 / 76% 84% 0 0}
+    .wave:nth-child(2){bottom:-205px;width:max(1350px,198vw);height:390px;opacity:.43;left:46%}
+    .wave:nth-child(3){bottom:-125px;width:max(1540px,220vw);height:350px;opacity:.27;left:56%}
+    @keyframes wave{50%{transform:translateX(-48%) rotate(1.2deg)}}
+    @media(max-width:980px){
+      .wave{bottom:-292px;width:max(980px,245vw);height:430px}
+      .wave:nth-child(2){bottom:-220px;width:max(1120px,285vw);height:390px;left:44%}
+      .wave:nth-child(3){bottom:-140px;width:max(1280px,325vw);height:350px;left:57%}
+      .command-shell.filter-open .filter-sidebar,
+      .command-shell.filter-closing:not(.filter-open) .filter-sidebar{position:fixed!important;left:12px!important;right:12px!important;top:auto!important;bottom:14px!important;width:auto!important;max-height:min(74dvh,620px)!important;margin:0!important;z-index:80!important;overflow-y:auto!important;overscroll-behavior:contain!important;box-shadow:0 28px 90px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.06)!important;background:rgba(24,10,18,.96)!important;backdrop-filter:blur(18px)!important}
+      .command-shell.filter-open::after{content:"";position:fixed;inset:0;background:rgba(12,5,10,.38);backdrop-filter:blur(3px);z-index:70}
+      .command-shell.filter-open .commands-panel{position:relative;z-index:1}
+      .filter-side-head{position:sticky;top:0;z-index:2;background:linear-gradient(180deg,rgba(24,10,18,.98),rgba(24,10,18,.9));padding-bottom:10px;border-bottom:1px solid rgba(255,221,200,.12)}
+      .filter-sidebar .filters{padding-top:2px;padding-bottom:6px}
+    }
+    @media(max-width:560px){
+      .command-shell.filter-open .filter-sidebar,
+      .command-shell.filter-closing:not(.filter-open) .filter-sidebar{left:10px!important;right:10px!important;bottom:10px!important;max-height:min(78dvh,650px)!important;border-radius:24px!important}
+      .wave{bottom:-304px;width:max(900px,270vw);height:420px}
+      .wave:nth-child(2){bottom:-224px;width:max(1040px,320vw);height:382px}
+      .wave:nth-child(3){bottom:-136px;width:max(1200px,365vw);height:340px}
+    }
+
   </style>
 </head>
 <body>
