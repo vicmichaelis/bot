@@ -426,6 +426,116 @@
       .cta p{max-width:100%}
     }
 
+
+    /* Mobile-only CTA polish: desktop layout above remains unchanged */
+    @media(max-width:760px){
+      .cta{padding-bottom:64px}
+      .cta-card{
+        padding:34px 24px 210px!important;
+        min-height:455px!important;
+        border-radius:32px!important;
+        align-items:flex-start;
+        justify-content:flex-start;
+        background:
+          radial-gradient(circle at 78% 82%,rgba(255,226,189,.22),transparent 34%),
+          radial-gradient(circle at 12% 0%,rgba(246,184,184,.18),transparent 36%),
+          linear-gradient(145deg,#4b2033,#9f4e58 54%,#d89262)!important;
+      }
+      .cta-card::before{
+        content:"";
+        position:absolute;
+        left:18px;
+        right:18px;
+        bottom:18px;
+        height:185px;
+        border:1px solid rgba(255,242,223,.18);
+        border-radius:26px;
+        background:linear-gradient(180deg,rgba(255,242,223,.10),rgba(255,242,223,.035));
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+        z-index:1;
+        pointer-events:none;
+      }
+      .cta-image{
+        top:auto!important;
+        right:-10px!important;
+        bottom:0!important;
+        width:min(82%,390px)!important;
+        height:230px!important;
+        object-position:right bottom!important;
+        border-radius:0 0 32px 0!important;
+        opacity:.96!important;
+        filter:drop-shadow(0 24px 34px rgba(44,12,22,.25));
+      }
+      .cta h3{
+        max-width:11ch!important;
+        white-space:normal!important;
+        font-size:clamp(2.35rem,11vw,4rem)!important;
+        line-height:.94!important;
+        letter-spacing:-.07em!important;
+        margin-bottom:14px!important;
+      }
+      .cta p{
+        max-width:100%!important;
+        font-size:1rem!important;
+        line-height:1.55!important;
+        margin-bottom:18px!important;
+      }
+      #ctaCommandCount{
+        display:inline-flex;
+        align-items:center;
+        padding:1px 7px 2px;
+        border-radius:999px;
+        background:rgba(255,242,223,.16);
+        color:#fff7e8;
+        font-weight:950;
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+      }
+      .cta .invite{
+        padding:12px 16px!important;
+        border-radius:999px!important;
+        box-shadow:0 14px 36px rgba(47,15,25,.18)!important;
+      }
+    }
+    @media(max-width:520px){
+      .cta-card{
+        padding:30px 20px 198px!important;
+        min-height:445px!important;
+        border-radius:28px!important;
+      }
+      .cta-card::before{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        height:174px;
+        border-radius:22px;
+      }
+      .cta-image{
+        width:min(92%,350px)!important;
+        height:215px!important;
+        right:-18px!important;
+        border-radius:0 0 28px 0!important;
+      }
+      .cta h3{
+        max-width:10.5ch!important;
+        font-size:clamp(2.05rem,12vw,3.15rem)!important;
+      }
+      .cta p{font-size:.96rem!important}
+      .cta .invite{width:max-content!important;max-width:max-content!important}
+    }
+    @media(max-width:380px){
+      .cta-card{padding-bottom:186px!important;min-height:432px!important}
+      .cta-card::before{height:162px}
+      .cta-image{height:198px!important;width:min(96%,320px)!important}
+      .cta h3{font-size:clamp(1.9rem,12vw,2.75rem)!important}
+      .cta p{font-size:.92rem!important}
+    }
+
+
+    /* Footer divider width refinement */
+    footer{border-top:0!important;padding:0 0 34px!important}
+    footer .foot{border-top:1px solid var(--line);padding-top:34px}
+    @media(max-width:680px){footer{padding-bottom:28px!important}footer .foot{padding-top:28px}}
+
   </style>
 </head>
 <body>
@@ -441,7 +551,7 @@
     <section class="wrap section"><div class="stats"><div class="marquee" id="marquee"></div></div></section>
     <section id="features" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-layer-group"></i>Layers Upon Layers of Commands</span><h2 class="section-title">Everything you need, in one bot.</h2><p class="section-copy">The bot has features for pets, rewards, collecting, rooms, and social systems, so users always have something to do.</p></div><div class="features-grid"><article class="feature-card tall"><h3>Immersive Pet Systems</h3><p>Select and customize your very own pet. Pets have hunger, happiness, energy, trust, wants, letters, rooms, and partners.</p><div class="care-list"><div class="care-item"><strong>/pet cuddle</strong><span>Cuddle your pet for happiness</span></div><div class="care-item"><strong>/pet walk</strong><span>Take your pet on a short walk.</span></div><div class="care-item"><strong>/pet fetch</strong><span>Play fetch with your pet</span></div><div class="care-item"><strong>/pet praise</strong><span>Praise your pet to boost stats</span></div><div class="care-item"><strong>/pet draw</strong><span>Draw with your pet for happiness and XP.</span></div><div class="care-item"><strong>/pet trivia</strong><span>Answer trivia for boosts and macarons</span></div><div class="care-item"><strong>/pet job</strong><span>Send your pet to earn macarons.</span></div><div class="care-item"><strong>/pet scavenge</strong><span>Gather materials for furniture crafting.</span></div><div class="care-item"><strong>/feedpet</strong><span>Feed meals, snacks, and cooked recipes.</span></div><div class="care-item"><strong>/pettrust</strong><span>Check your long-term trust bar.</span></div><div class="care-item"><strong>/pet nap</strong><span>Restore energy with a cozy rest.</span></div><div class="care-item"><strong>/pet sleep</strong><span>Let your pet fully recharge.</span></div><div class="care-item"><strong>/pet trick</strong><span>Practice a small trick together.</span></div><div class="care-item"><strong>/pet treat</strong><span>Feed your pet a quick treat.</span></div></div></article><div class="side-stack"><article class="feature-card"><h3>Macaron Economy</h3><p>Work, claim daily rewards, collect drops, trace constellations, listen to music, and exchange currency into upgrade points.</p><div class="mini-cmds"><span>/balance</span><span>/work</span><span>/claimdaily</span><span>/currencyexchange</span></div></article><article class="feature-card"><h3>Gacha Systems</h3><p>Roll once, roll ten times, discover items, inspect inventory, sell, gift, trade, and build a collection over time.</p><div class="mini-cmds"><span>/gacha</span><span>/gachaten</span><span>/listall</span><span>/inventory</span></div></article><article class="feature-card"><h3>Vic Michaelis Premium</h3><p>Premium adds smoother progression: bonus macarons, extra pet XP, more scavenge charges, quest refreshes, auto-cooked meals, and discounted pet sitting.</p><div class="mini-cmds"><span>+10% macarons</span><span>+50% pet XP</span><span>5 scavenges</span><span>quest refreshes</span></div></article></div></div></section>
     <section id="commands" class="wrap section"><div class="section-head"><span class="section-kicker"><i class="fa-solid fa-terminal"></i>Command reference</span><h2 class="section-title">Search all <span class="command-count" id="slashCommandCount">0</span> slash commands.</h2><p class="section-copy">All commands are available upon invite.</p></div><div class="command-shell" id="commandShell"><div class="commands-panel" id="commandsPanel"><div class="search-tools"><div class="search-row"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Search commands, categories, or descriptions"></div><button class="filter-open-btn" id="filterToggle" type="button" aria-expanded="false" aria-label="Open command filters"><i class="fa-solid fa-filter"></i></button></div><div class="command-layout"><div class="command-main"><div class="cmd-grid" id="commandGrid"></div></div></div></div><aside class="filter-sidebar" id="filterSidebar" aria-label="Command filters"><div class="filter-side-head"><span><i class="fa-solid fa-sliders"></i> Categories</span><button class="filter-close" id="filterClose" type="button" aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button></div><div class="filters" id="filters"></div><div class="filter-sort" aria-label="Command sorting"><div class="filter-sort-title"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</div><div class="sort-options" id="sortOptions"><button class="sort-option active" type="button" data-sort="az">Alphabetical (A to Z)</button><button class="sort-option" type="button" data-sort="za">Alphabetical (Z to A)</button><button class="sort-option" type="button" data-sort="grouped">Grouped (Category)</button></div></div></aside></div></section>
-    <section id="invite" class="wrap cta"><div class="cta-card"><h3>Invite Vic today for free.</h3><p>Invite Vic Michaelis and upgrade your Discord server with 70+ registered commands ready to use at your convenience.</p><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a><img class="cta-image" src="vicmichaelis.png" alt="Vic Michaelis" loading="lazy"></div></section>
+    <section id="invite" class="wrap cta"><div class="cta-card"><h3>Invite Vic today for free.</h3><p>Invite Vic Michaelis and upgrade your Discord server with <span id="ctaCommandCount">70+</span> registered commands ready to use at your convenience.</p><a class="invite" href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands"><i class="fa-brands fa-discord"></i>Invite Vic</a><img class="cta-image" src="vicmichaelis.png" alt="Vic Michaelis" loading="lazy"></div></section>
   </main><footer><div class="wrap foot"><div><span class="footer-name">Vic Michaelis</span> <span class="copyright">© 2026</span></div><div class="foot-links"><a href="#features">Features</a><a href="#commands">Commands</a><a href="https://discord.com/oauth2/authorize?client_id=1498111109184618526&amp;permissions=412379114560&amp;integration_type=0&amp;scope=bot+applications.commands">Invite</a></div></div></footer>
 <script>
 const inviteUrl = "https://discord.com/oauth2/authorize?client_id=1498111109184618526&permissions=412379114560&integration_type=0&scope=bot+applications.commands";
@@ -479,6 +589,13 @@ const commandEntries = commands.flatMap(c => {
   }
   return [c];
 });
+function formatRoundedCommandCount(total){
+  const rounded = Math.floor(total / 5) * 5;
+  return `${rounded}${total % 5 === 0 ? '' : '+'}`;
+}
+const ctaCommandCount = document.getElementById('ctaCommandCount');
+if(ctaCommandCount) ctaCommandCount.textContent = formatRoundedCommandCount(commandEntries.length);
+
 const premiumCommandCard = {
   cat: "Premium",
   name: "Vic Michaelis Premium",
