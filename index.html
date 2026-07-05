@@ -862,6 +862,62 @@
       }
     }
 
+
+    /* Final feature-grid alignment: left pet card top aligns with Macaron Economy and bottom aligns with Premium */
+    @media(min-width:761px){
+      #features .features-grid{
+        display:grid!important;
+        grid-template-columns:1.14fr .86fr!important;
+        gap:16px!important;
+        align-items:stretch!important;
+      }
+      #features .feature-card.tall{
+        height:100%!important;
+        min-height:0!important;
+        align-self:stretch!important;
+        display:flex!important;
+        flex-direction:column!important;
+        justify-content:flex-start!important;
+      }
+      #features .side-stack{
+        height:100%!important;
+        align-self:stretch!important;
+        display:grid!important;
+        grid-template-rows:repeat(3,minmax(0,1fr))!important;
+        gap:16px!important;
+      }
+      #features .side-stack .feature-card{
+        height:100%!important;
+        min-height:0!important;
+        display:flex!important;
+        flex-direction:column!important;
+        justify-content:flex-start!important;
+      }
+      #features .feature-card.tall .care-list{
+        flex:0 0 auto!important;
+        display:grid!important;
+        grid-template-columns:repeat(2,minmax(0,1fr))!important;
+        gap:10px!important;
+        margin-top:17px!important;
+        margin-bottom:0!important;
+        align-content:start!important;
+        align-items:start!important;
+      }
+      #features .feature-card.tall .care-item{
+        min-height:66px!important;
+        padding:13px 12px!important;
+        display:flex!important;
+        flex-direction:column!important;
+        justify-content:center!important;
+      }
+      #features .feature-card.tall .care-item strong{
+        margin-bottom:4px!important;
+      }
+      #features .feature-card.tall .care-item span{
+        line-height:1.36!important;
+      }
+    }
+
   </style>
 </head>
 <body>
