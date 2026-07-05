@@ -591,6 +591,107 @@
     @keyframes secretLoad{0%{width:0}48%{width:63%}100%{width:100%}}
     @media(max-width:980px){.secret-loading,.secret-stage{display:none!important}}
 
+
+    /* Requested mobile refinements: waves, hero buttons, previews, pet pager, command list limit, and invite CTA */
+    @media(max-width:980px){
+      .liquid{
+        position:fixed!important;
+        top:0!important;
+        left:0!important;
+        right:0!important;
+        bottom:auto!important;
+        height:100dvh!important;
+        min-height:100dvh!important;
+        max-height:100dvh!important;
+        overflow:hidden!important;
+      }
+      @supports not (height:100dvh){.liquid{height:100vh!important;min-height:100vh!important;max-height:100vh!important}}
+      .liquid .wave{bottom:calc(-324px + env(safe-area-inset-bottom,0px))!important}
+      .liquid .wave:nth-child(2){bottom:calc(-252px + env(safe-area-inset-bottom,0px))!important}
+      .liquid .wave:nth-child(3){bottom:calc(-172px + env(safe-area-inset-bottom,0px))!important}
+
+      .hero-actions{display:flex!important;flex-wrap:nowrap!important;align-items:center!important}
+      .hero-actions .btn{width:auto!important;flex:1 1 0!important;justify-content:center!important;white-space:nowrap!important;padding-left:12px!important;padding-right:12px!important}
+
+      .showcase,.preview-card,.slide-window{overflow:visible!important}
+      .preview-card{border-radius:0!important}
+      .slide-window{padding-bottom:10px!important}
+      .slide-shell{border-radius:26px!important;padding-bottom:18px!important;gap:10px!important}
+      .discord{margin-bottom:8px!important;flex:0 1 auto!important;min-height:330px!important}
+      .dots{margin-top:10px!important;margin-bottom:4px!important;padding-bottom:8px!important}
+
+      .cmd-grid{max-height:min(68dvh,680px)!important;overflow-y:auto!important;overflow-x:hidden!important;padding-right:5px!important}
+    }
+    @media(max-width:560px){
+      .hero-actions{gap:8px!important}
+      .hero-actions .btn{font-size:.88rem!important;gap:7px!important;padding:12px 10px!important}
+      .liquid .wave{bottom:calc(-336px + env(safe-area-inset-bottom,0px))!important}
+      .liquid .wave:nth-child(2){bottom:calc(-258px + env(safe-area-inset-bottom,0px))!important}
+      .liquid .wave:nth-child(3){bottom:calc(-168px + env(safe-area-inset-bottom,0px))!important}
+      .slide-window,.slide-track{min-height:520px!important}
+      .slide-shell{min-height:520px!important}
+      .discord{min-height:305px!important}
+    }
+    @media(max-width:380px){
+      .hero-actions .btn{font-size:.8rem!important;padding-left:8px!important;padding-right:8px!important}
+    }
+
+    @media(max-width:760px){
+      .feature-card.tall.mobile-pet-carousel .care-list.pet-care-pager{display:block!important;overflow:hidden!important;margin-top:18px!important}
+      .feature-card.tall.mobile-pet-carousel .pet-care-track{display:flex!important;transition:transform .36s cubic-bezier(.18,.9,.2,1);will-change:transform;touch-action:pan-y}
+      .feature-card.tall.mobile-pet-carousel .pet-care-page{flex:0 0 100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start;padding:0 1px}
+      .feature-card.tall.mobile-pet-carousel .care-item{min-height:104px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+      .pet-care-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+      .pet-care-dot{width:9px;height:9px;border:0;border-radius:999px;background:rgba(255,225,204,.3);cursor:pointer;transition:.18s}
+      .pet-care-dot.active{background:#ffd3aa;transform:scale(1.18)}
+    }
+    @media(min-width:761px){.pet-care-dots{display:none!important}}
+    @media(max-width:420px){
+      .feature-card.tall.mobile-pet-carousel .pet-care-page{grid-template-columns:1fr 1fr!important;gap:8px}
+      .feature-card.tall.mobile-pet-carousel .care-item{padding:10px!important;min-height:112px!important}
+      .feature-card.tall.mobile-pet-carousel .care-item strong{font-size:.88rem}
+      .feature-card.tall.mobile-pet-carousel .care-item span{font-size:.78rem}
+    }
+
+    @media(max-width:760px){
+      .cta-card{
+        padding:32px 210px 32px 24px!important;
+        min-height:330px!important;
+        border-radius:32px!important;
+        overflow:hidden!important;
+        justify-content:center!important;
+      }
+      .cta-card::before{display:none!important;content:none!important}
+      .cta-image{
+        top:auto!important;
+        right:0!important;
+        bottom:0!important;
+        width:205px!important;
+        height:205px!important;
+        object-fit:contain!important;
+        object-position:right bottom!important;
+        border-radius:0 0 32px 0!important;
+        opacity:.96!important;
+        z-index:1!important;
+      }
+      .cta h3{max-width:100%!important;white-space:normal!important;font-size:clamp(2rem,9vw,3.2rem)!important}
+      .cta p{max-width:100%!important;margin-bottom:18px!important}
+      .cta .invite{position:relative!important;z-index:3!important;margin-bottom:0!important}
+    }
+    @media(max-width:520px){
+      .cta-card{padding:30px 145px 28px 20px!important;min-height:360px!important;border-radius:28px!important}
+      .cta-image{width:145px!important;height:170px!important;right:-4px!important;border-radius:0 0 28px 0!important}
+      .cta h3{font-size:clamp(1.85rem,10vw,2.8rem)!important;max-width:11ch!important}
+      .cta p{font-size:.94rem!important;line-height:1.5!important}
+      .cta .invite{padding:11px 14px!important}
+    }
+    @media(max-width:390px){
+      .cta-card{padding-right:118px!important;min-height:380px!important}
+      .cta-image{width:124px!important;height:158px!important}
+      .cta .invite{font-size:.84rem!important;padding:10px 12px!important}
+    }
+
+
   </style>
 </head>
 <body>
@@ -1167,6 +1268,91 @@ const chips=[
   document.addEventListener('fullscreenchange', updateFullscreenState);
   back.addEventListener('click', closeSecret);
 })();
+
+/* Requested behavior: click the right preview card to advance, and mobile pet command paging */
+(function(){
+  const previewCard = document.getElementById('previewCard');
+  if(previewCard){
+    previewCard.addEventListener('click', function(event){
+      const clickedSlide = event.target.closest('.slide');
+      if(!clickedSlide || !clickedSlide.classList.contains('next-slide')) return;
+      if(typeof dragging !== 'undefined' && dragging) return;
+      if(typeof dragMoved !== 'undefined' && dragMoved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slide !== 'undefined') setSlide(slide + 1);
+    });
+  }
+
+  const petCard = [...document.querySelectorAll('.feature-card.tall')].find(card => card.querySelector('h3')?.textContent.trim() === 'Immersive Pet Systems');
+  const mobileQuery = window.matchMedia('(max-width:760px)');
+  if(!petCard) return;
+  const list = petCard.querySelector('.care-list');
+  if(!list || list.dataset.pagerReady === 'true') return;
+
+  const originalItems = [...list.querySelectorAll(':scope > .care-item')];
+  if(originalItems.length <= 4) return;
+  let currentPage = 0;
+  let startX = 0;
+  let startY = 0;
+  let touching = false;
+
+  const track = document.createElement('div');
+  track.className = 'pet-care-track';
+  const pages = [];
+  originalItems.slice(0,12).forEach((item, index) => {
+    if(index % 4 === 0){
+      const page = document.createElement('div');
+      page.className = 'pet-care-page';
+      pages.push(page);
+      track.appendChild(page);
+    }
+    pages[pages.length - 1].appendChild(item);
+  });
+  originalItems.slice(12).forEach(item => item.remove());
+  list.textContent = '';
+  list.appendChild(track);
+  list.classList.add('pet-care-pager');
+  list.dataset.pagerReady = 'true';
+  petCard.classList.add('mobile-pet-carousel');
+
+  const dots = document.createElement('div');
+  dots.className = 'pet-care-dots';
+  pages.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'pet-care-dot';
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Pet commands page ${index + 1}`);
+    dot.addEventListener('click', () => setPetPage(index));
+    dots.appendChild(dot);
+  });
+  list.after(dots);
+
+  function setPetPage(index){
+    currentPage = (index + pages.length) % pages.length;
+    track.style.transform = `translateX(${-currentPage * 100}%)`;
+    [...dots.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === currentPage));
+  }
+
+  list.addEventListener('pointerdown', event => {
+    if(!mobileQuery.matches) return;
+    touching = true;
+    startX = event.clientX;
+    startY = event.clientY;
+  });
+  list.addEventListener('pointerup', event => {
+    if(!touching || !mobileQuery.matches) return;
+    touching = false;
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+    if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)){
+      setPetPage(currentPage + (dx < 0 ? 1 : -1));
+    }
+  });
+  list.addEventListener('pointercancel', () => { touching = false; });
+  setPetPage(0);
+})();
+
 </script>
 </body>
 </html>
