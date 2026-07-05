@@ -754,24 +754,48 @@
     }
 
 
-    /* Follow-up refinements */
+    /* Follow-up requested polish: preview click animation, tighter pet command cards, mobile footer */
+    .slide.next-slide{cursor:pointer!important}
     @media(min-width:761px){
-      .feature-card.tall .care-list,
-      .feature-card.tall.mobile-pet-carousel .care-list.pet-care-pager{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
-      .feature-card.tall .care-item,
-      .feature-card.tall.mobile-pet-carousel .care-item{min-height:58px!important;padding:9px 11px!important;justify-content:center!important}
-      .feature-card.tall .care-item strong{margin-bottom:3px!important}
-      .feature-card.tall .care-item span{font-size:.84rem!important;line-height:1.3!important}
+      .feature-card.tall .care-list{align-content:start!important;align-items:start!important}
+      .feature-card.tall .care-item{min-height:56px!important;padding:9px 11px!important;justify-content:center!important}
+      .feature-card.tall .care-item strong{margin-bottom:3px!important;font-size:.95rem!important}
+      .feature-card.tall .care-item span{font-size:.82rem!important;line-height:1.28!important}
     }
     @media(max-width:760px){
-      footer{padding:26px 0 calc(30px + env(safe-area-inset-bottom,0px))!important;background:linear-gradient(180deg,rgba(19,9,17,.18),rgba(255,235,218,.035));}
-      .foot{align-items:center!important;text-align:center!important;gap:16px!important}
-      .foot>div:first-child{width:100%;padding:16px 14px;border:1px solid rgba(255,221,200,.12);border-radius:22px;background:rgba(255,235,218,.045);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-      .footer-name{display:block;font-size:1.05rem;margin-bottom:3px}
-      .copyright{display:block;font-size:.86rem}
-      .developed-by{margin-top:8px!important;font-size:.88rem!important}
-      .foot-links{width:100%;justify-content:center!important;gap:10px!important}
-      .foot-links a{padding:9px 12px;border:1px solid rgba(255,221,200,.13);border-radius:999px;background:rgba(255,235,218,.055)}
+      footer{padding:0 0 28px!important}
+      footer .foot{align-items:center!important;text-align:center!important;gap:18px!important;border-top:1px solid var(--line)!important;padding:28px 0 0!important}
+      footer .foot>div:first-child{width:100%!important}
+      .footer-name{display:block!important;font-size:1.05rem!important;margin-bottom:4px!important}
+      .copyright{display:block!important;font-size:.88rem!important}
+      .developed-by{margin-top:8px!important;font-size:.9rem!important}
+      .foot-links{width:100%!important;justify-content:center!important;gap:10px!important}
+      .foot-links a{display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 12px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:rgba(255,235,218,.055)!important}
+    }
+
+  
+
+    /* Final bug fixes: exact command-search premium description + tighter pet command boxes without shrinking text */
+    @media(min-width:761px){
+      .feature-card.tall .care-list{
+        flex:0 0 auto!important;
+        align-content:start!important;
+        align-items:start!important;
+        gap:8px!important;
+      }
+      .feature-card.tall .care-item{
+        min-height:48px!important;
+        padding:7px 11px!important;
+        justify-content:center!important;
+      }
+      .feature-card.tall .care-item strong{
+        margin-bottom:3px!important;
+        font-size:inherit!important;
+      }
+      .feature-card.tall .care-item span{
+        font-size:.9rem!important;
+        line-height:1.32!important;
+      }
     }
 
   </style>
@@ -840,7 +864,7 @@ if(ctaCommandCount) ctaCommandCount.textContent = formatRoundedCommandCount(comm
 const premiumCommandCard = {
   cat: "Premium",
   name: "Vic Michaelis Premium",
-  desc: "Premium can be purchased in the store with macarons, giving various bonuses and benefits.",
+  desc: "Premium can be purchased in the store, giving various bonuses and benefits.",
   group: "Premium",
   sub: "Premium",
   tags: ["premium"],
@@ -1154,7 +1178,31 @@ const chips=[
 
 /* Final requested interactions: robust next-preview click, mobile feature pages, and external tab safety */
 (function(){
-  /* next-preview click is handled by the final dedicated handler below */
+  const previewCard = document.getElementById('previewCard');
+  let previewDown = null;
+  if(previewCard){
+    previewCard.addEventListener('pointerdown', function(event){
+      const next = event.target.closest('.slide.next-slide');
+      if(!next) return;
+      event.preventDefault();
+      event.stopPropagation();
+      previewDown = {x:event.clientX, y:event.clientY, target:next};
+    }, true);
+    previewCard.addEventListener('pointerup', function(event){
+      if(!previewDown) return;
+      const dx = event.clientX - previewDown.x;
+      const dy = event.clientY - previewDown.y;
+      const stillNext = event.target.closest('.slide.next-slide') || previewDown.target;
+      previewDown = null;
+      if(!stillNext || Math.abs(dx) > 14 || Math.abs(dy) > 14) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slides !== 'undefined') {
+        const targetIndex = slides.indexOf(stillNext);
+        if(targetIndex >= 0) setSlide(targetIndex);
+      }
+    }, true);
+  }
 
   const featuresGrid = document.querySelector('#features .features-grid');
   const featureCards = featuresGrid ? [featuresGrid.querySelector(':scope > .feature-card'), ...featuresGrid.querySelectorAll(':scope > .side-stack > .feature-card')].filter(Boolean) : [];
@@ -1198,39 +1246,6 @@ const chips=[
     link.setAttribute('target','_blank');
     link.setAttribute('rel','noopener noreferrer');
   });
-})();
-
-/* Follow-up fix: click the visible right preview exactly once without starting a drag */
-(function(){
-  const previewCard = document.getElementById('previewCard');
-  if(!previewCard) return;
-  let nextClick = null;
-  previewCard.addEventListener('pointerdown', function(event){
-    const next = event.target.closest('.slide.next-slide');
-    if(!next) return;
-    const index = slides.indexOf(next);
-    if(index < 0) return;
-    nextClick = { x:event.clientX, y:event.clientY, index };
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true);
-  previewCard.addEventListener('pointerup', function(event){
-    if(!nextClick) return;
-    const candidate = nextClick;
-    nextClick = null;
-    const dx = event.clientX - candidate.x;
-    const dy = event.clientY - candidate.y;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    if(Math.abs(dx) > 12 || Math.abs(dy) > 12) return;
-    if(typeof setSlide === 'function') requestAnimationFrame(() => setSlide(candidate.index));
-  }, true);
-  previewCard.addEventListener('click', function(event){
-    if(event.target.closest('.slide.next-slide')){
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
-  }, true);
 })();
 
 </script>
@@ -1436,7 +1451,21 @@ const chips=[
 
 /* Requested behavior: click the right preview card to advance, and mobile pet command paging */
 (function(){
-  /* next-preview click is handled by the final dedicated handler below */
+  const previewCard = document.getElementById('previewCard');
+  if(previewCard){
+    previewCard.addEventListener('click', function(event){
+      const clickedSlide = event.target.closest('.slide');
+      if(!clickedSlide || !clickedSlide.classList.contains('next-slide')) return;
+      if(typeof dragging !== 'undefined' && dragging) return;
+      if(typeof dragMoved !== 'undefined' && dragMoved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slides !== 'undefined') {
+        const targetIndex = slides.indexOf(clickedSlide);
+        if(targetIndex >= 0) setSlide(targetIndex);
+      }
+    });
+  }
 
   const petCard = [...document.querySelectorAll('.feature-card.tall')].find(card => card.querySelector('h3')?.textContent.trim() === 'Immersive Pet Systems');
   const mobileQuery = window.matchMedia('(max-width:760px)');
@@ -1510,7 +1539,31 @@ const chips=[
 
 /* Final requested interactions: robust next-preview click, mobile feature pages, and external tab safety */
 (function(){
-  /* next-preview click is handled by the final dedicated handler below */
+  const previewCard = document.getElementById('previewCard');
+  let previewDown = null;
+  if(previewCard){
+    previewCard.addEventListener('pointerdown', function(event){
+      const next = event.target.closest('.slide.next-slide');
+      if(!next) return;
+      event.preventDefault();
+      event.stopPropagation();
+      previewDown = {x:event.clientX, y:event.clientY, target:next};
+    }, true);
+    previewCard.addEventListener('pointerup', function(event){
+      if(!previewDown) return;
+      const dx = event.clientX - previewDown.x;
+      const dy = event.clientY - previewDown.y;
+      const stillNext = event.target.closest('.slide.next-slide') || previewDown.target;
+      previewDown = null;
+      if(!stillNext || Math.abs(dx) > 14 || Math.abs(dy) > 14) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if(typeof setSlide === 'function' && typeof slides !== 'undefined') {
+        const targetIndex = slides.indexOf(stillNext);
+        if(targetIndex >= 0) setSlide(targetIndex);
+      }
+    }, true);
+  }
 
   const featuresGrid = document.querySelector('#features .features-grid');
   const featureCards = featuresGrid ? [featuresGrid.querySelector(':scope > .feature-card'), ...featuresGrid.querySelectorAll(':scope > .side-stack > .feature-card')].filter(Boolean) : [];
@@ -1555,8 +1608,6 @@ const chips=[
     link.setAttribute('rel','noopener noreferrer');
   });
 })();
-
-
 
 </script>
 </body>
