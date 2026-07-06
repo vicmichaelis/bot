@@ -1034,7 +1034,7 @@ function formatRoundedCommandCount(total){
   return `${rounded}${total % 5 === 0 ? '' : '+'}`;
 }
 const ctaCommandCount = document.getElementById('ctaCommandCount');
-if(ctaCommandCount) ctaCommandCount.textContent = formatRoundedCommandCount(commands.length);
+if(ctaCommandCount) ctaCommandCount.textContent = formatRoundedCommandCount(commandEntries.length);
 
 const premiumCommandCard = {
   cat: "Premium",
@@ -1049,7 +1049,7 @@ const commandCards = [...commandEntries, premiumCommandCard];
 const slashCommandCount = document.getElementById('slashCommandCount');
 function animateSlashCommandCount(){
   if(!slashCommandCount || slashCommandCount.dataset.done === 'true') return;
-  const total = commands.length;
+  const total = commandEntries.length;
   const duration = 780;
   const start = performance.now();
   slashCommandCount.dataset.done = 'true';
@@ -1264,9 +1264,11 @@ function renderDrag(dx){
 }
 dots.forEach(d=>d.addEventListener('click',()=>setSlide(Number(d.dataset.i))));
 card.addEventListener('wheel',e=>{e.preventDefault(); if(lock) return; lock=true; setSlide(slide+(e.deltaY>0?1:-1)); setTimeout(()=>lock=false,620);},{passive:false});
-let dragStartX=0, dragStartY=0, dragging=false, dragMoved=false, dragAutoLock=false;
+let dragStartX=0, dragStartY=0, dragging=false, dragMoved=false, dragAutoLock=false, previewClickCandidate=null;
 card.addEventListener('pointerdown', e=>{
   if(e.button !== 0) return;
+  const downSlide = e.target.closest('.slide');
+  previewClickCandidate = downSlide && downSlide.classList.contains('next-slide') ? downSlide : null;
   e.preventDefault();
   window.getSelection?.().removeAllRanges?.();
   dragStartX=e.clientX; dragStartY=e.clientY; dragging=true; dragMoved=false; dragAutoLock=false;
@@ -1279,6 +1281,7 @@ card.addEventListener('pointermove', e=>{
   const dx=e.clientX-dragStartX, dy=e.clientY-dragStartY;
   if(Math.abs(dx)>4 && Math.abs(dx)>Math.abs(dy)){
     dragMoved=true;
+    previewClickCandidate=null;
     e.preventDefault();
     const state = renderDrag(dx);
     if(!dragAutoLock && Math.abs(state.drag) >= 248){
@@ -1286,6 +1289,7 @@ card.addEventListener('pointermove', e=>{
       const direction = state.drag < 0 ? 1 : -1;
       dragging = false;
       dragMoved = false;
+      previewClickCandidate=null;
       card.classList.remove('dragging');
       document.body.classList.remove('preview-dragging');
       window.getSelection?.().removeAllRanges?.();
@@ -1305,13 +1309,20 @@ function finishPreviewDrag(e){
   window.getSelection?.().removeAllRanges?.();
   card.releasePointerCapture?.(e.pointerId);
   if(Math.abs(dx)>75 && Math.abs(dx)>Math.abs(dy)){
+    previewClickCandidate=null;
     setSlide(slide+(dx<0?1:-1));
+  } else if(previewClickCandidate && Math.abs(dx)<=8 && Math.abs(dy)<=8){
+    const targetIndex = slides.indexOf(previewClickCandidate);
+    previewClickCandidate=null;
+    if(targetIndex >= 0) setSlide(targetIndex);
+    else setSlide(slide);
   } else {
+    previewClickCandidate=null;
     setSlide(slide);
   }
 }
 card.addEventListener('pointerup', finishPreviewDrag);
-card.addEventListener('pointercancel', e=>{dragging=false; dragAutoLock=false; card.classList.remove('dragging'); document.body.classList.remove('preview-dragging'); window.getSelection?.().removeAllRanges?.(); card.releasePointerCapture?.(e.pointerId); setSlide(slide);});
+card.addEventListener('pointercancel', e=>{dragging=false; dragAutoLock=false; previewClickCandidate=null; card.classList.remove('dragging'); document.body.classList.remove('preview-dragging'); window.getSelection?.().removeAllRanges?.(); card.releasePointerCapture?.(e.pointerId); setSlide(slide);});
 card.addEventListener('dragstart', e=>e.preventDefault());
 card.addEventListener('selectstart', e=>{ if(dragging){ e.preventDefault(); } });
 card.addEventListener('click', e=>{ if(dragMoved){ e.preventDefault(); e.stopPropagation(); dragMoved=false; } }, true);
